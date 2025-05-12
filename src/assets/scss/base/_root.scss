@@ -1,0 +1,51 @@
+@use "../helpers" as *;
+
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,200..1000&display=swap");
+
+:root {
+  --primary: #00c7c2;
+  --secondary: #00b1ad;
+  --background: #f5f5f5;
+  --text-color: #262626;
+  --gray: #888;
+  --font-primary: "Nunito Sans", sans-serif;
+  --transition-ease: 0.3s ease;
+  --transition-bezier: 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+  --content-width: #{rem(1520)};
+  --content-padding: #{rem(20)};
+}
+
+@include media("3xl") {
+  :root {
+    --content-width: #{rem(1280)};
+  }
+}
+@include media("xl") {
+  :root {
+    --content-width: #{rem(1024)};
+  }
+}
+@include media("lg") {
+  :root {
+    --content-width: #{rem(768)};
+  }
+}
+@include media("md") {
+  :root {
+    --content-width: #{rem(640)};
+  }
+}
+@include media("sm") {
+  :root {
+    --content-width: #{rem(475)};
+    --content-padding: #{rem(16)};
+  }
+}
+
+.container {
+  margin: 0 auto;
+  padding-left: var(--content-padding);
+  padding-right: var(--content-padding);
+  width: 100%;
+  max-width: calc(var(--content-width) + var(--content-padding) * 2);
+}

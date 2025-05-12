@@ -27,13 +27,33 @@
   }
 }
 
+.underline {
+  text-decoration: underline;
+}
+
 .group {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: rem(20);
 }
 
-.underline {
-  text-decoration: underline;
+.group-row {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.group-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(var(--col-width, rem(300)), 1fr)
+  );
+  gap: rem(20);
 }

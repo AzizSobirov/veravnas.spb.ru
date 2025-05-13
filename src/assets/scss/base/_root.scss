@@ -1,10 +1,12 @@
 @use "../helpers" as *;
 
 :root {
-  --primary: #0988D0;
-  --secondary: #0BBF8C;
-  --background: #F5F7FA;
-  --text-color: #2D2D2D;
+  --primary: #0988d0;
+  --primary-darker: #{darken(#0988d0, 5%)};
+  --secondary: #0bbf8c;
+  --secondary-darker: #{darken(#0bbf8c, 5%)};
+  --background: #f5f7fa;
+  --text-color: #2d2d2d;
   --gray: #888;
   --font-primary: "Montserrat", sans-serif;
   --font-secondary: "Open Sans", sans-serif;
@@ -14,11 +16,6 @@
   --content-padding: #{rem(40)};
 }
 
-@include media("3xl") {
-  :root {
-    --content-width: #{rem(1280)};
-  }
-}
 @include media("xl") {
   :root {
     --content-width: #{rem(1024)};

@@ -1,17 +1,268 @@
 ---
-import { Section, P, BgImg, Image, Icon, Button } from "ui";
+import { Section, H1, H2, H3, P, BgImg, Image, Icon, Button } from "ui";
 
 interface Props {
+  title?: string;
+  desc?: string;
+  category?: boolean;
   img?: string;
+  imgClass?: string;
   isMain?: boolean;
 }
 
-const { img = "hero/1.png", isMain = false } = Astro.props;
+const {
+  title,
+  desc,
+  category,
+  img = "hero/1.png",
+  imgClass,
+  isMain = false,
+} = Astro.props;
 ---
 
 <!-- Hero -->
-<Section name="hero"> hero </Section>
+<Section name="hero">
+  <div class="hero__text group">
+    {
+      isMain ? (
+        <>
+          <div class="text-hero">ВЕРА В НАС</div>
+          <div class="text-subhero">Клиника психиатрии и наркологии</div>
+          <P class="font-semibold">
+            Лечение зависимостей. Работаем с 2008 года
+          </P>
+
+          {category && (
+            <div class="hero__categories group-row">
+              <a href="#" class="hero__categories-item">
+                Лечении алкоголизма
+              </a>
+              <a href="#" class="hero__categories-item">
+                Наркотической зависимости
+              </a>
+              <a href="#" class="hero__categories-item">
+                Детоксикация и снятие ломки
+              </a>
+              <a href="#" class="hero__categories-item">
+                Кодирование
+              </a>
+            </div>
+          )}
+
+          <Button variant="primary" data-form="callback">
+            Оставить заявку
+          </Button>
+        </>
+      ) : (
+        <>
+          {title && <H1>{title}</H1>}
+          {desc && <P set:html={desc} />}
+          {category && (
+            <div class="hero__categories group-row">
+              <a href="#" class="hero__categories-item">
+                Приедем за 25 минут
+              </a>
+              <a href="#" class="hero__categories-item">
+                Выезд от 1 500 ₽
+              </a>
+              <a href="#" class="hero__categories-item">
+                Строго анонимно
+              </a>
+              <a href="#" class="hero__categories-item">
+                Круглосуточно
+              </a>
+            </div>
+          )}
+          <Button variant="primary" data-form="callback">
+            Оставить заявку
+          </Button>
+        </>
+      )
+    }
+  </div>
+
+  <div class="hero__advantages group-row">
+    <div class="hero__advantages-item">
+      <Icon src="anonym.svg" />
+      <H3>100% Анонимность</H3>
+    </div>
+    <div class="hero__advantages-item">
+      <Icon src="24-hours.svg" />
+      <H3>Работаем круглосуточно</H3>
+    </div>
+    <div class="hero__advantages-item">
+      <Icon src="nurse.svg" />
+      <H3>Опытные врачи</H3>
+    </div>
+    <div class="hero__advantages-item">
+      <Icon src="warranty.svg" />
+      <H3>Гарантия результата </H3>
+    </div>
+  </div>
+
+  <div class="hero__img">
+    <Image src={img} alt={title} class={imgClass} />
+  </div>
+</Section>
 
 <style lang="scss" is:global>
   @use "scss/helpers" as *;
+
+  .hero {
+    position: relative;
+    padding-top: rem(80) !important;
+
+    @include media("3xl") {
+      padding-top: rem(60) !important;
+    }
+    @include media("lg") {
+      padding-top: rem(400) !important;
+    }
+
+    .container {
+      @include media("3xl", min-width) {
+        gap: rem(90);
+      }
+    }
+
+    &__text {
+      width: 100%;
+      max-width: rem(865);
+      gap: rem(30);
+
+      &:has(.text-hero) {
+        gap: 0;
+
+        @include media("3xl", min-width) {
+          max-width: rem(900);
+        }
+
+        .text-subhero {
+          margin-bottom: rem(24);
+        }
+
+        .hero__categories {
+          margin: rem(60) 0 rem(70);
+        }
+      }
+    }
+
+    &__categories {
+      width: 100%;
+      flex-wrap: wrap;
+      gap: rem(24) rem(18);
+
+      @include media("sm") {
+        gap: rem(15);
+      }
+
+      &-item {
+        padding: rem(12) rem(20);
+        width: fit-content;
+        color: var(--primary);
+        font-family: var(--font-secondary);
+        font-size: clamp(1rem, 0.95rem + 0.25vw, 1.25rem);
+        border-radius: rem(15);
+        border: rem(1) solid var(--primary);
+        transition: var(--transition-ease);
+
+        &:hover {
+          color: #fff;
+          background: var(--primary);
+        }
+      }
+    }
+
+    &__advantages {
+      width: 100%;
+      flex-wrap: wrap;
+      align-items: stretch;
+      gap: rem(20);
+
+      @include media("xs") {
+        gap: rem(15);
+      }
+
+      &-item {
+        position: relative;
+        padding: 0 rem(28) rem(28);
+        text-align: center;
+        flex: 1 0 rem(320);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: rem(18);
+
+        &::before {
+          content: "";
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          z-index: -1;
+          width: 100%;
+          height: calc(100% - 35px);
+          background: #fff;
+          border-radius: rem(20);
+          box-shadow: 0 0 rem(52) 0 rgba(0, 0, 0, 0.15);
+        }
+
+        @include media("2xl") {
+          flex-basis: calc(100% / 2 - rem(20));
+        }
+
+        @include media("xs") {
+          flex-basis: 100%;
+        }
+      }
+
+      .icon {
+        padding: rem(25);
+        width: rem(125);
+        height: rem(125);
+        background: var(--primary);
+        border-radius: 50%;
+      }
+    }
+
+    &__img {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      z-index: -2;
+      pointer-events: none;
+
+      @include media("lg") {
+        top: 0;
+        left: auto;
+        right: 0;
+      }
+
+      img {
+        min-height: var(--height);
+        height: var(--height);
+        max-width: unset;
+        object-fit: contain;
+      }
+
+      .img-1 {
+        transform: translate(-8%, -60%);
+        --height: #{rem(1040)};
+
+        @include media("3xl") {
+          --height: #{rem(820)};
+        }
+        @include media("2xl") {
+          --height: #{rem(760)};
+          transform: translate(-5%, -75%);
+        }
+        @include media("xl") {
+          --height: #{rem(720)};
+        }
+        @include media("lg") {
+          --height: #{rem(480)};
+          transform: translate(15%, 10%);
+        }
+      }
+    }
+  }
 </style>

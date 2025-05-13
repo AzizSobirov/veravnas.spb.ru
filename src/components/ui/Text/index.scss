@@ -1,45 +1,37 @@
 @use "scss/helpers" as *;
 
-.text-h1 {
-  font-size: rem(50);
-  font-weight: 700;
+.text-hero {
+  margin-left: -0.05em;
+  color: var(--primary);
+  font-size: clamp(3rem, 2rem + 5vw, 8rem);
+  font-weight: 800;
+}
 
-  @include media(lg) {
-    font-size: rem(36);
-  }
-  @include media(sm) {
-    font-size: rem(32);
-  }
-  @include media(xs) {
-    font-size: rem(28);
-  }
+.text-subhero {
+  font-size: clamp(1.5rem, 1.35rem + 0.75vw, 2.25rem);
+  font-weight: 700;
+  font-family: var(--font-secondary);
+}
+
+.text-h1 {
+  color: var(--primary);
+  font-size: clamp(2.125rem, 1.95rem + 0.875vw, 3rem);
+  font-weight: 800;
 }
 
 .text-h2 {
-  color: var(--primary);
-  font-size: rem(44);
-  font-weight: 700;
-  line-height: 1.2;
+  font-size: clamp(1.5rem, 1.25rem + 1.25vw, 2.75rem);
 
-  @include media(lg) {
-    font-size: rem(32);
-  }
-  @include media(sm) {
-    font-size: rem(28);
-  }
-  @include media(xs) {
-    font-size: rem(24);
+  strong {
+    color: var(--primary);
+    font-weight: 700;
   }
 }
 
 .text-h3 {
   color: var(--primary);
-  font-size: rem(24);
+  font-size: clamp(1.125rem, 1.1rem + 0.125vw, 1.25rem);
   font-weight: 700;
-
-  @include media(sm) {
-    font-size: rem(20);
-  }
 }
 
 .text-h4 {
@@ -54,5 +46,20 @@
 }
 
 .text-p {
-  font-weight: 300;
+  font-size: clamp(1rem, 0.95rem + 0.25vw, 1.25rem);
+  font-family: var(--font-secondary);
+
+  strong {
+    color: var(--primary);
+    font-weight: 700;
+  }
+}
+
+.text-hero,
+.text-subhero,
+.text-h1,
+.text-h2,
+.text-h3 {
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
 }

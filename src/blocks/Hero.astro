@@ -118,6 +118,9 @@ const {
     @include media("lg") {
       padding-top: rem(400) !important;
     }
+    @include media("sm") {
+      padding-top: rem(350) !important;
+    }
 
     .container {
       @include media("3xl", min-width) {
@@ -136,13 +139,34 @@ const {
         @include media("3xl", min-width) {
           max-width: rem(900);
         }
+        @include media("xl") {
+          max-width: rem(800);
+        }
 
         .text-subhero {
           margin-bottom: rem(24);
+
+          @include media("lg") {
+            margin-top: rem(10);
+            margin-bottom: rem(20);
+          }
+          @include media("sm") {
+            margin-bottom: rem(15);
+          }
         }
 
         .hero__categories {
           margin: rem(60) 0 rem(70);
+
+          @include media("3xl") {
+            margin: rem(40) 0 rem(50);
+          }
+          @include media("lg") {
+            margin: rem(30) 0 rem(40);
+          }
+          @include media("sm") {
+            margin: rem(20) 0 rem(30);
+          }
         }
       }
     }
@@ -152,8 +176,14 @@ const {
       flex-wrap: wrap;
       gap: rem(24) rem(18);
 
+      @include media("lg") {
+        gap: rem(15) rem(10);
+      }
       @include media("sm") {
         gap: rem(15);
+      }
+      @include media("xs") {
+        gap: rem(8) rem(5);
       }
 
       &-item {
@@ -161,7 +191,7 @@ const {
         width: fit-content;
         color: var(--primary);
         font-family: var(--font-secondary);
-        font-size: clamp(1rem, 0.95rem + 0.25vw, 1.25rem);
+        font-size: clamp(0.875rem, 0.8rem + 0.375vw, 1.25rem);
         border-radius: rem(15);
         border: rem(1) solid var(--primary);
         transition: var(--transition-ease);
@@ -169,6 +199,14 @@ const {
         &:hover {
           color: #fff;
           background: var(--primary);
+        }
+
+        @include media("lg") {
+          padding: rem(10) rem(20);
+          border-radius: 9999px;
+        }
+        @include media("sm") {
+          padding: rem(5) rem(10);
         }
       }
     }
@@ -180,7 +218,8 @@ const {
       gap: rem(20);
 
       @include media("xs") {
-        gap: rem(15);
+        margin-top: rem(15);
+        gap: rem(12);
       }
 
       &-item {
@@ -209,18 +248,36 @@ const {
         @include media("2xl") {
           flex-basis: calc(100% / 2 - rem(20));
         }
-
+        @include media("lg") {
+          .text-h3 {
+            font-size: rem(16);
+          }
+        }
         @include media("xs") {
-          flex-basis: 100%;
+          padding: 0 rem(25) rem(15);
+          flex-basis: calc(100% / 2 - rem(15));
+          gap: rem(10);
+
+          .text-h3 {
+            font-size: rem(12);
+          }
         }
       }
 
       .icon {
         padding: rem(25);
-        width: rem(125);
-        height: rem(125);
         background: var(--primary);
         border-radius: 50%;
+        --icon-size: #{rem(125)};
+
+        @include media("xl") {
+          padding: 20px;
+          --icon-size: #{rem(100)};
+        }
+        @include media("xs") {
+          padding: rem(15);
+          --icon-size: #{rem(65)};
+        }
       }
     }
 
@@ -235,6 +292,10 @@ const {
         top: 0;
         left: auto;
         right: 0;
+      }
+      @include media("sm") {
+        top: rem(50);
+        width: 100%;
       }
 
       img {
@@ -261,6 +322,10 @@ const {
         @include media("lg") {
           --height: #{rem(480)};
           transform: translate(15%, 10%);
+        }
+        @include media("sm") {
+          --height: #{rem(340)};
+          transform: translate(20%, 0);
         }
       }
     }

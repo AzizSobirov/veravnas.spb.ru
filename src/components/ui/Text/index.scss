@@ -1,14 +1,14 @@
 @use "scss/helpers" as *;
 
 .text-hero {
-  margin-left: -0.05em;
+  margin-left: -0.025em;
   color: var(--primary);
-  font-size: clamp(3rem, 2rem + 5vw, 8rem);
+  font-size: clamp(2.375rem, 1.0769rem + 5.7692vw, 8rem);
   font-weight: 800;
 }
 
 .text-subhero {
-  font-size: clamp(1.5rem, 1.35rem + 0.75vw, 2.25rem);
+  font-size: clamp(1.25rem, 1.0192rem + 1.0256vw, 2.25rem);
   font-weight: 700;
   font-family: var(--font-secondary);
 }
@@ -46,7 +46,7 @@
 }
 
 .text-p {
-  font-size: clamp(1rem, 0.95rem + 0.25vw, 1.25rem);
+  font-size: clamp(0.875rem, 0.7885rem + 0.3846vw, 1.25rem);
   font-family: var(--font-secondary);
 
   strong {

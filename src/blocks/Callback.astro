@@ -1,0 +1,116 @@
+---
+import { Section, H2, H3, P, Image, Icon, Button } from "ui";
+---
+
+<!-- Callback -->
+<Section name="callback">
+  <div class="callback__content">
+    <div class="callback__img">
+      <Image src="callback-img.png" />
+    </div>
+    <div class="callback__text group">
+      <H2>
+        команда <strong>опытных профессионалов</strong>
+      </H2>
+      <div class="callback__text-subtitle">Записаться на прием легко!</div>
+      <p class="callback__text-desc">
+        Назначьте прием у любого врача в клинике “Вера в НАС”
+      </p>
+      <Button class="bg-white" data-modal="callback">
+        записаться на прием
+      </Button>
+    </div>
+  </div>
+</Section>
+
+<style lang="scss" is:global>
+  @use "scss/helpers" as *;
+
+  .callback {
+    position: relative;
+
+    &__content {
+      padding: 0 15%;
+      width: 100%;
+      height: rem(495);
+      background: linear-gradient(324deg, #3fb991 0%, #0988d0 100%);
+      border-radius: rem(20);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: rem(50);
+
+      @include media("3xl") {
+        padding: 0 15% 0 10%;
+      }
+      @include media("2xl") {
+        padding: 0 10%;
+      }
+      @include media("xl") {
+        padding: 5%;
+        height: auto;
+        flex-direction: row-reverse;
+        gap: rem(20);
+      }
+    }
+
+    &__img {
+      position: relative;
+      width: rem(454);
+      height: 100%;
+
+      @include media("md") {
+        display: none;
+      }
+
+      img {
+        position: absolute;
+        top: 0;
+        width: 100%;
+
+        @include media("2xl") {
+          height: 100%;
+          object-fit: contain;
+        }
+        @include media("xl") {
+          height: rem(400);
+          transform: translate(0, -40%);
+        }
+      }
+    }
+
+    &__text {
+      color: #fff;
+      width: 100%;
+      max-width: rem(580);
+      gap: rem(25);
+
+      @include media("xl") {
+        gap: rem(20);
+      }
+      @include media("md") {
+        max-width: 100%;
+        gap: rem(15);
+      }
+
+      .text-h2 strong {
+        color: #fff;
+      }
+
+      &-subtitle {
+        font-size: clamp(1.125rem, 0.9808rem + 0.641vw, 1.75rem);
+        font-family: var(--font-secondary);
+        font-weight: 600;
+      }
+
+      &-desc {
+        margin: rem(5) 0 rem(15);
+
+        @include media("md") {
+          margin: rem(5) 0 rem(10);
+        }
+      }
+    }
+  }
+</style>

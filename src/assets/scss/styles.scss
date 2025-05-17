@@ -33,7 +33,7 @@ section {
   }
 
   @include media("sm") {
-    padding: rem(35) 0;
+    padding: rem(25) 0;
 
     .container {
       gap: rem(25);
@@ -41,4 +41,4 @@ section {
   }
 }
 
-// @include show(".quality", true, true);
+// @include show(".callback", true, true);

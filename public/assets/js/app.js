@@ -204,6 +204,27 @@ if (currentYear) {
   currentYear.textContent = new Date().getFullYear();
 }
 
+// Swipers
+const directionsSwiper = new Swiper(".directions .directions__list", {
+  slidesPerView: "auto",
+  spaceBetween: 12,
+  breakpoints: {
+    475: {
+      spaceBetween: 15,
+    },
+    640: {
+      spaceBetween: 20,
+    },
+    1280: {
+      spaceBetween: 30,
+    },
+    1680: {
+      slidesPerView: 5,
+      spaceBetween: 40,
+    },
+  },
+});
+
 // Initialize the fancybox
 const fancyboxTriggers = Array.from(
   document.querySelectorAll("[data-fancybox]")

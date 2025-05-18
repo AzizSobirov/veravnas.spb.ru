@@ -1,0 +1,103 @@
+---
+import { Section, H2, H3, P, BgImg, Image, Icon, Button } from "ui";
+---
+
+<!-- Directions -->
+<Section name="directions">
+  <H2>Направления <strong>клиники</strong></H2>
+
+  <div class="directions__list swiper">
+    <div class="swiper-wrapper">
+      {
+        Array.from({ length: 5 }).map((_, index) => (
+          <div class="swiper-slide group">
+            <BgImg src={`directions/${index + 1}.png`} />
+            <a href="#" class="group-link" />
+            <div class="group-icon icon" />
+            <div class="group-title">Лечение алкоголизма</div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</Section>
+
+<style lang="scss" is:global>
+  @use "scss/helpers" as *;
+
+  .directions {
+    position: relative;
+
+    &__list {
+      width: 100%;
+      overflow: visible;
+      cursor: grab;
+
+      .group {
+        position: relative;
+        padding: 1rem;
+        width: rem(320);
+        height: rem(460);
+        border-radius: rem(25);
+        overflow: hidden;
+        justify-content: space-between;
+
+        @include media("3xl") {
+          height: rem(440);
+        }
+        @include media("lg") {
+          width: rem(260);
+          height: rem(340);
+        }
+        @include media("sm") {
+          padding: 0.8rem;
+          width: rem(220);
+          height: rem(300);
+        }
+
+        &:hover {
+          .group-icon {
+            transform: rotate(-45deg);
+          }
+        }
+
+        &-link {
+          position: absolute;
+          top: 0;
+          left: 0;
+          z-index: 2;
+          width: 100%;
+          height: 100%;
+        }
+
+        &-icon {
+          margin-left: auto;
+          background-color: #fff;
+          background-image: url('data:image/svg+xml,<svg width="29" height="16" viewBox="0 0 29 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 7C0.447715 7 0 7.44772 0 8C0 8.55228 0.447715 9 1 9V7ZM28.2071 8.70711C28.5976 8.31658 28.5976 7.68342 28.2071 7.29289L21.8431 0.928932C21.4526 0.538408 20.8195 0.538408 20.4289 0.928932C20.0384 1.31946 20.0384 1.95262 20.4289 2.34315L26.0858 8L20.4289 13.6569C20.0384 14.0474 20.0384 14.6805 20.4289 15.0711C20.8195 15.4616 21.4526 15.4616 21.8431 15.0711L28.2071 8.70711ZM1 8V9H27.5V8V7H1V8Z" fill="%230988D0" /></svg>');
+          background-size: 50% auto;
+          background-position: center;
+          background-repeat: no-repeat;
+          border-radius: 50%;
+          box-shadow: 0 0 rem(10) rem(5) rgba(0, 0, 0, 0.1);
+          transition: var(--transition-ease);
+          --icon-size: #{rem(50)};
+
+          @include media("lg") {
+            --icon-size: #{rem(40)};
+          }
+          @include media("sm") {
+            --icon-size: #{rem(36)};
+          }
+        }
+
+        &-title {
+          font-weight: 700;
+          font-size: clamp(1.25rem, 1.1058rem + 0.641vw, 1.875rem);
+          letter-spacing: 0.03em;
+          text-transform: uppercase;
+          color: #fff;
+        }
+      }
+    }
+  }
+</style>

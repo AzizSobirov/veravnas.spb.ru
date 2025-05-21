@@ -1,0 +1,104 @@
+---
+import { Section, H2, H3, P, Image, Icon, Button } from "ui";
+---
+
+<!-- Path -->
+<Section name="path">
+  <div class="path__text group">
+    <H2>
+      Путь к свободе <br />
+      <strong>начинается с первого шага</strong>
+    </H2>
+    <P>
+      Мы знаем, насколько хрупким может быть внутреннее состояние человека,
+      столкнувшегося с болью, тревогой, страхом и одиночеством.В жизни каждого
+      бывают периоды, когда кажется, что всё рушится: проблемы на работе, в
+      семье, непонимание, эмоциональное выгорание, утраты... И в поиске
+      облегчения человек может потянуться к тому, что кажется «спасением» —
+      алкоголю, наркотикам, таблеткам, другим психоактивным веществам.
+      <br /><br />
+      Но иллюзия облегчения быстро развеивается.
+    </P>
+    <div class="path__text-box text-p">
+      Зависимость — это не выход. Это ловушка.
+    </div>
+    <P>
+      Она разрушает здоровье, стирает личность, уводит от близких, уничтожает
+      перспективы. И главное — с каждым днём всё сложнее вернуться обратно.
+      <br /><br />
+      <strong>Но надежда есть. И помощь — рядом.</strong>
+    </P>
+    <div class="path__text-block text-p">
+      В клинике «Вера в НАС» мы не просто боремся с физической тягой. <br /> Мы восстанавливаем
+      человека целиком: тело, психику, волю, веру в себя и своё будущее.
+    </div>
+  </div>
+  <div class="path__img">
+    <Image src="path-img.png" />
+  </div>
+</Section>
+
+<style lang="scss" is:global>
+  @use "scss/helpers" as *;
+
+  .path {
+    position: relative;
+
+    &__text {
+      padding: rem(80) 0;
+      width: 100%;
+      max-width: rem(1215);
+      gap: rem(25);
+
+      @include media("lg") {
+        padding: rem(40) 0;
+      }
+      @include media("xs") {
+        padding: rem(20) 0;
+        gap: rem(20);
+      }
+
+      &-box {
+        padding: rem(20) rem(50);
+        color: var(--primary);
+        font-weight: 700;
+        border: rem(1) solid var(--primary);
+        border-radius: rem(20);
+
+        @include media("lg") {
+          padding: rem(15) rem(30);
+        }
+        @include media("xs") {
+          padding: rem(10) rem(20);
+        }
+      }
+
+      &-block {
+        padding: rem(35) rem(50);
+        color: #fff;
+        font-weight: 700;
+        background: var(--primary);
+        border-radius: rem(20);
+
+        @include media("lg") {
+          padding: rem(25) rem(30);
+        }
+        @include media("xs") {
+          padding: rem(15) rem(20);
+        }
+      }
+    }
+
+    &__img {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      z-index: -1;
+      transform: translate(50%, 0);
+
+      @include media("lg") {
+        transform: translate(40%, -10%);
+      }
+    }
+  }
+</style>

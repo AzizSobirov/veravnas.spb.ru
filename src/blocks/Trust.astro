@@ -1,0 +1,110 @@
+---
+import { Section, H2, H3, P, Image, Icon, Button } from "ui";
+---
+
+<!-- Trust -->
+<Section name="trust">
+  <H2>почему <strong>нам доверяют</strong></H2>
+
+  <div class="trust__list group-row">
+    <div class="trust__list-item">
+      <Icon src="brain.svg" />
+      <H3>Комплексный подход</H3>
+      <p>медицинская помощь, психотерапия, поддержка семьи</p>
+    </div>
+    <div class="trust__list-item">
+      <Icon src="doctor.svg" />
+      <H3>Опытные врачи-наркологи и психологи</H3>
+      <p>работающие с мотивацией, травмами, зависимым поведением</p>
+    </div>
+    <div class="trust__list-item">
+      <Icon src="service.svg" />
+      <H3>Комфортные условия проживания</H3>
+      <p>у нас не больница, а безопасное пространство для перезапуска</p>
+    </div>
+    <div class="trust__list-item">
+      <Icon src="anonym.svg" />
+      <H3>Анонимность и уважение к каждому </H3>
+      <p>мы никого не осуждаем — мы помогаем начать заново</p>
+    </div>
+  </div>
+</Section>
+
+<style lang="scss" is:global>
+  @use "scss/helpers" as *;
+
+  .trust {
+    position: relative;
+
+    .container {
+      gap: rem(35);
+
+      @include media("sm") {
+        gap: rem(10);
+      }
+    }
+
+    &__list {
+      width: 100%;
+      flex-wrap: wrap;
+      align-items: stretch;
+      gap: rem(20);
+
+      @include media("xs") {
+        margin-top: rem(15);
+        flex-direction: column;
+        gap: rem(12);
+      }
+
+      &-item {
+        position: relative;
+        padding: 0 rem(35) rem(40);
+        flex: 1 0 rem(320);
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: rem(18);
+
+        &::before {
+          content: "";
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          z-index: -1;
+          width: 100%;
+          height: calc(100% - rem(15));
+          background: #fff;
+          border-radius: rem(20);
+          box-shadow: 0 0 rem(52) 0 rgba(0, 0, 0, 0.15);
+        }
+
+        @include media("3xl") {
+          padding: 0 rem(25) rem(30);
+        }
+        @include media("2xl") {
+          flex-basis: calc(100% / 2 - rem(20));
+        }
+        @include media("lg") {
+          padding: 0 rem(20) rem(20);
+          flex-basis: calc(100% / 2 - rem(15));
+          gap: rem(10);
+
+          p {
+            font-size: rem(14);
+          }
+        }
+      }
+
+      .icon {
+        padding: rem(12);
+        background: var(--primary);
+        border-radius: 50%;
+        --icon-size: #{rem(80)};
+
+        @include media("lg") {
+          --icon-size: #{rem(65)};
+        }
+      }
+    }
+  }
+</style>

@@ -89,96 +89,122 @@ const header = document.querySelector(".header");
 if (header) {
   const menu = header.querySelector(".header__menu");
   const services = menu.querySelectorAll(".menu-item-has-children");
-  const contacts = header.querySelector(".header__contacts");
 
-  window.addEventListener("scroll", () =>
-    header.classList.toggle("sticky", window.scrollY > 0)
-  );
+  window.addEventListener("scroll", () => {
+    header.classList.toggle("sticky", window.scrollY > 0);
+  });
 
-  // const tabs = header.querySelectorAll("#tab");
-  // const tabLinks = header.querySelectorAll("#tab-link");
-  // const tabsBody = header.querySelector(".mobile__menu-content");
-  // const tabsContent = tabsBody.querySelector("#content");
-  // const tabsContentClose = tabsBody.querySelector("#close");
+  services.forEach((service) => {
+    const subMenu = service.querySelector(".sub-menu");
 
-  // tabs.forEach((tab) => {
-  //   tab.addEventListener("click", () => {
-  //     const isActive = tab.classList.contains("active");
-  //     tabs.forEach((tab) => tab.classList.remove("active"));
+    service.addEventListener("mouseenter", () => {
+      subMenu.style.display = "grid"; // Ensure the submenu is visible
 
-  //     if (isActive) {
-  //       tabsBody.classList.remove("show");
+      setTimeout(() => {
+        subMenu.dataset.state = "active";
+      }, 10);
+    });
 
-  //       // Wait for the animation to finish before setting display to 'none'
-  //       tabsBody.addEventListener("transitionend", function handler(event) {
-  //         if (
-  //           event.propertyName === "transform" &&
-  //           !tabsBody.classList.contains("show")
-  //         ) {
-  //           tabsBody.style.display = "none";
-  //           tabsContent.innerHTML = "";
-  //           tabsBody.removeEventListener("transitionend", handler);
-  //         }
-  //       });
-  //     }
+    service.addEventListener("mouseleave", () => {
+      subMenu.dataset.state = "inactive";
 
-  //     // If tab was not already active, show the content
-  //     if (!isActive) {
-  //       tab.classList.add("active");
-  //       tabsBody.style.display = "flex";
+      subMenu.addEventListener("transitionend", function handler(event) {
+        if (subMenu.dataset.state != "active") {
+          subMenu.style.display = "none"; // Hide after fade-out
+          subMenu.removeEventListener("transitionend", handler);
+        }
+      });
+    });
+  });
 
-  //       requestAnimationFrame(() => {
-  //         tabsBody.classList.add("show");
-  //       });
+  const tabsEl = header.querySelector(".mobile__menu-tabs");
+  const tabs = tabsEl.querySelectorAll("[data-toggle]");
+  const tabsBody = header.querySelector(".mobile__menu-content");
+  const tabsContent = header.querySelector("#menu-content");
+  const tabsContentClose = header.querySelector(".mobile__menu-close");
+  const tabsContacts = tabsEl.querySelector(".mobile__menu-contacts");
 
-  //       if (tab.dataset.toggle == "menu") {
-  //         tabsContent.innerHTML = menu.innerHTML + contacts.outerHTML;
-  //       } else {
-  //         tabsContent.innerHTML = servicesSubMenu.outerHTML;
-  //       }
-  //     }
-  //   });
-  // });
+  tabs.forEach((tab) => {
+    tab.addEventListener("click", () => {
+      const isActive = tab.classList.contains("active");
+      tabs.forEach((tab) => tab.classList.remove("active"));
+      tabsContacts.style.maxHeight = 0;
 
-  // tabLinks.forEach((link) => {
-  //   link.addEventListener("click", () => {
-  //     tabs.forEach((tab) => {
-  //       tab.classList.remove("active");
-  //     });
+      if (isActive) {
+        tabsBody.classList.remove("show");
 
-  //     // Add animation for hiding
-  //     tabsBody.classList.remove("show");
-  //     tabsBody.addEventListener("transitionend", function handler(event) {
-  //       if (
-  //         event.propertyName === "transform" &&
-  //         !tabsBody.classList.contains("show")
-  //       ) {
-  //         tabsBody.style.display = "none";
-  //         tabsContent.innerHTML = "";
-  //         tabsBody.removeEventListener("transitionend", handler);
-  //       }
-  //     });
-  //   });
-  // });
+        // Wait for the animation to finish before setting display to 'none'
+        tabsBody.addEventListener("transitionend", function handler(event) {
+          if (
+            event.propertyName === "transform" &&
+            !tabsBody.classList.contains("show")
+          ) {
+            tabsBody.style.display = "none";
+            tabsContent.innerHTML = "";
+            tabsBody.removeEventListener("transitionend", handler);
+          }
+        });
+      }
 
-  // tabsContentClose.addEventListener("click", () => {
-  //   // Add animation for hiding
-  //   tabsBody.classList.remove("show");
-  //   tabsBody.addEventListener("transitionend", function handler(event) {
-  //     if (
-  //       event.propertyName === "transform" &&
-  //       !tabsBody.classList.contains("show")
-  //     ) {
-  //       tabsBody.style.display = "none";
-  //       tabsContent.innerHTML = "";
-  //       tabsBody.removeEventListener("transitionend", handler);
-  //     }
-  //   });
+      // If tab was not already active, show the content
+      if (!isActive) {
+        tab.classList.add("active");
 
-  //   tabs.forEach((tab) => {
-  //     tab.classList.remove("active");
-  //   });
-  // });
+        if (tab.dataset.toggle != "contacts") {
+          tabsBody.style.display = "flex";
+
+          requestAnimationFrame(() => {
+            tabsBody.classList.add("show");
+          });
+        } else {
+          tabsContacts.style.maxHeight = tabsContacts.scrollHeight + "px";
+          tabsBody.classList.remove("show");
+
+          // Wait for the animation to finish before setting display to 'none'
+          tabsBody.addEventListener("transitionend", function handler(event) {
+            if (
+              event.propertyName === "transform" &&
+              !tabsBody.classList.contains("show")
+            ) {
+              tabsBody.style.display = "none";
+              tabsContent.innerHTML = "";
+              tabsBody.removeEventListener("transitionend", handler);
+            }
+          });
+        }
+
+        if (tab.dataset.toggle == "menu") {
+          let html = menu.querySelector(".menu");
+          tabsContent.innerHTML = html.outerHTML;
+        } else if (tab.dataset.toggle == "catalog") {
+          let menuServices = menu.querySelector(
+            ".menu-item-has-children .sub-menu"
+          );
+
+          tabsContent.innerHTML = menuServices.outerHTML;
+        }
+      }
+    });
+  });
+
+  tabsContentClose.addEventListener("click", () => {
+    // Add animation for hiding
+    tabsBody.classList.remove("show");
+    tabsBody.addEventListener("transitionend", function handler(event) {
+      if (
+        event.propertyName === "transform" &&
+        !tabsBody.classList.contains("show")
+      ) {
+        tabsBody.style.display = "none";
+        tabsContent.innerHTML = "";
+        tabsBody.removeEventListener("transitionend", handler);
+      }
+    });
+
+    tabs.forEach((tab) => {
+      tab.classList.remove("active");
+    });
+  });
 }
 
 // Footer

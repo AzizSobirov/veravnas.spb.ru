@@ -1,0 +1,203 @@
+---
+import { Section, H2, H3, P, Image, Icon, Button } from "ui";
+---
+
+<!-- Application -->
+<Section name="application">
+  <div class="application__content group">
+    <H2>ВЫЗВАТЬ <strong>ВРАЧА НА ДОМ</strong></H2>
+    <div class="application__content-contact group-row">
+      <a
+        class="application__content-phone"
+        href="tel:+78129241222"
+        target="_blank"
+        title="Телефон"
+      >
+        +7 (812) 924-12-22
+      </a>
+
+      <div class="group-row">
+        <a href="#" target="_blank" title="WhatsApp">
+          <Icon src="whatsapp-2.svg" />
+        </a>
+        <a href="#" target="_blank" title="Telegram">
+          <Icon src="telegram-2.svg" />
+        </a>
+      </div>
+    </div>
+
+    <div class="application__content-subtitle">
+      Или заполните заявку <br /> и мы <strong>оперативно перезвоним вам</strong
+      >
+    </div>
+
+    <form class="application__form the-form">
+      <div class="group-row">
+        <input type="text" name="phone" placeholder="Ваш телефон" required />
+        <button type="submit">Вызвать врача</button>
+      </div>
+
+      <div class="text-xs">
+        Нажимая кнопку, вы соглашаетесь с <a
+          href="#"
+          target="_blank"
+          title="Политика конфиденциальности">политикой конфиденциальности</a
+        >
+      </div>
+    </form>
+  </div>
+  <div class="application__img">
+    <Image src="application-img.png" />
+  </div>
+</Section>
+
+<style lang="scss" is:global>
+  @use "scss/helpers" as *;
+
+  .application {
+    position: relative;
+
+    &__content {
+      position: relative;
+      padding: rem(38) rem(50) rem(65);
+      width: 100%;
+      color: #fff;
+      background: url("/assets/img/application-bg.png") center/cover no-repeat;
+      border-radius: rem(20);
+      gap: rem(20);
+
+      @include media("sm") {
+        padding: rem(20);
+      }
+
+      .text-h2 strong {
+        color: #fff;
+      }
+
+      &-contact {
+        padding: rem(24);
+        background: #fff;
+        border-radius: rem(20);
+        gap: rem(30);
+
+        @include media("lg") {
+          padding: rem(15);
+        }
+        @include media("xs") {
+          padding: rem(10);
+          border-radius: rem(15);
+          gap: rem(12);
+        }
+
+        .group-row {
+          gap: rem(12);
+          --icon-size: #{rem(40)};
+
+          @include media("lg") {
+            gap: rem(10);
+            --icon-size: #{rem(32)};
+          }
+          @include media("xs") {
+            gap: rem(8);
+            --icon-size: #{rem(28)};
+          }
+        }
+      }
+
+      &-phone {
+        color: var(--primary);
+        font-size: clamp(1.25rem, 1.0192rem + 1.0256vw, 2.25rem);
+        font-weight: 700;
+        white-space: nowrap;
+      }
+
+      &-subtitle {
+        font-size: clamp(1rem, 0.8846rem + 0.5128vw, 1.5rem);
+      }
+    }
+
+    &__form {
+      width: 100%;
+      max-width: rem(550);
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: rem(15);
+
+      .group-row {
+        width: 100%;
+        max-width: rem(500);
+        align-items: stretch;
+        gap: rem(12);
+
+        @include media("xs") {
+          flex-direction: column;
+        }
+      }
+
+      input {
+        padding: rem(15);
+        width: 100%;
+        border: rem(1) solid #fff;
+        border-radius: rem(5);
+        flex-grow: 1;
+
+        &::placeholder {
+          color: #fff;
+          opacity: 0.6;
+        }
+      }
+
+      button {
+        padding: rem(15) rem(40);
+        color: #fff;
+        background: var(--secondary);
+        border-radius: rem(5);
+        transition: var(--transition-ease);
+        white-space: nowrap;
+
+        &:hover {
+          background: var(--secondary-darker);
+        }
+      }
+
+      .text-xs {
+        width: 100%;
+        font-size: rem(14);
+
+        @include media("xs") {
+          font-size: rem(12);
+        }
+
+        a {
+          text-decoration: underline dotted;
+        }
+      }
+    }
+
+    &__img {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-5%, -50%);
+      height: 100%;
+
+      @include media("3xl") {
+        height: 100%;
+      }
+      @include media("xl") {
+        height: 80%;
+        transform: translate(10%, -50%);
+      }
+      @include media("lg") {
+        display: none;
+      }
+
+      img {
+        height: 100%;
+        min-width: fit-content;
+        object-fit: contain;
+      }
+    }
+  }
+</style>

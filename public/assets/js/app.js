@@ -234,6 +234,34 @@ const directionsSwiper = new Swiper(".directions .directions__list", {
   },
 });
 
+const specialistsSwiper = new Swiper(
+  ".specialists .specialists__list .swiper",
+  {
+    slidesPerView: "auto",
+    spaceBetween: 12,
+    navigation: {
+      nextEl: ".specialists .specialists__list .swiper-button-next",
+      prevEl: ".specialists .specialists__list .swiper-button-prev",
+    },
+    breakpoints: {
+      475: {
+        spaceBetween: 15,
+      },
+      640: {
+        spaceBetween: 20,
+      },
+      1280: {
+        slidesPerView: 3,
+        spaceBetween: 20,
+      },
+      1680: {
+        slidesPerView: 4,
+        spaceBetween: 20,
+      },
+    },
+  }
+);
+
 // Initialize the fancybox
 const fancyboxTriggers = Array.from(
   document.querySelectorAll("[data-fancybox]")

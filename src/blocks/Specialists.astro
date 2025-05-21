@@ -3,12 +3,194 @@ import { Section, H2, H3, P, Image, Icon, Button } from "ui";
 ---
 
 <!-- Specialists -->
-<Section name="specialists"> .specialists </Section>
+<Section name="specialists">
+  <H2>Наши <strong>СПециалисты</strong></H2>
+
+  <div class="specialists__list">
+    <div class="swiper">
+      <div class="swiper-wrapper">
+        {
+          Array.from({ length: 6 }).map((_, index) => (
+            <div class="swiper-slide specialists__item group">
+              <div class="specialists__item-img">
+                <Image src="specialists/1.png" />
+              </div>
+              <div class="specialists__item-content group">
+                <div class="specialists__item-name">
+                  <strong>Соколов</strong>
+                  Евгений Юрьевич
+                </div>
+                <p class="specialists__item-desc">
+                  Главный врач <br />
+                  Опыт работы 20 лет
+                </p>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+  </div>
+</Section>
 
 <style lang="scss" is:global>
   @use "scss/helpers" as *;
 
   .specialists {
     position: relative;
+
+    &__list {
+      position: relative;
+      width: 100%;
+
+      .swiper {
+        margin: rem(-50);
+        padding: rem(50);
+        width: 100%;
+        box-sizing: content-box;
+        overflow: hidden;
+
+        @include media("xl") {
+          overflow: visible;
+        }
+      }
+
+      .swiper-slide {
+        transition: opacity var(--transition-ease);
+        opacity: 0;
+      }
+
+      .swiper-button-next,
+      .swiper-button-prev {
+        margin: 0 !important;
+        transform: translateY(-50%);
+        width: rem(70);
+        height: rem(70);
+        color: #fff;
+        background: var(--primary);
+        border-radius: 50%;
+        --swiper-navigation-sides-offset: #{rem(-35)};
+
+        @include media("3xl") {
+          --swiper-navigation-sides-offset: #{rem(-15)};
+        }
+        @include media("xl") {
+          display: none !important;
+        }
+
+        &::after {
+          font-size: rem(28);
+        }
+      }
+
+      .swiper-button-disabled {
+        display: none;
+      }
+
+      @include media(rem(1280), min-width) {
+        .swiper-slide-active,
+        .swiper-slide-next,
+        .swiper-slide-next + div,
+        .swiper-slide-next + div + div {
+          opacity: 1;
+        }
+      }
+
+      @include media("xl") {
+        .swiper-slide {
+          opacity: 1;
+        }
+      }
+    }
+
+    &__item {
+      width: 100%;
+      background: #fff;
+      box-shadow: 0 0 rem(50) 0 rgba(0, 0, 0, 0.15);
+      border-radius: rem(20);
+      overflow: hidden;
+
+      @include media("xl") {
+        width: rem(420);
+      }
+      @include media("sm") {
+        width: rem(320);
+        box-shadow: 0 0 rem(20) 0 rgba(0, 0, 0, 0.15);
+      }
+      @include media("xs") {
+        width: rem(280);
+      }
+      @include media("xxs") {
+        width: rem(260);
+      }
+
+      &-img {
+        height: rem(365);
+        width: 100%;
+
+        @include media("sm") {
+          height: rem(250);
+        }
+        @include media("xs") {
+          height: rem(220);
+        }
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          object-position: top;
+        }
+      }
+
+      &-content {
+        padding: rem(16) rem(22) rem(32);
+        width: 100%;
+        gap: rem(14);
+
+        @include media("xs") {
+          padding: rem(15) rem(20) rem(25);
+        }
+      }
+
+      &-name {
+        position: relative;
+        font-size: rem(26);
+        font-family: var(--font-secondary);
+
+        @include media("sm") {
+          font-size: rem(20);
+        }
+        @include media("xs") {
+          font-size: rem(18);
+        }
+
+        &::after {
+          content: "";
+          position: absolute;
+          bottom: rem(-4);
+          left: 0;
+          width: rem(118);
+          height: rem(1);
+          background: var(--primary);
+        }
+
+        strong {
+          display: block;
+          color: var(--primary);
+        }
+      }
+
+      &-desc {
+        font-family: var(--font-secondary);
+
+        @include media("xs") {
+          font-size: rem(14);
+        }
+      }
+    }
   }
 </style>

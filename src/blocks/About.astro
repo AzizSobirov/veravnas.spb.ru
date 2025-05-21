@@ -1,0 +1,181 @@
+---
+import { Section, H2, H3, P, BgImg, Image, Icon, Button } from "ui";
+---
+
+<!-- About -->
+<Section name="about">
+  <div class="about__left">
+    <div
+      class="about__left-video"
+      data-fancybox="about"
+      data-src="about-video.mp4"
+    >
+      <BgImg src="about-poster.png" />
+
+      <div class="group">
+        <Icon src="play.svg" />
+        <p>Посмотрите видео о <br /> нашей клинике</p>
+      </div>
+    </div>
+
+    <div class="about__left-img">
+      <Image src="about-img.png" />
+    </div>
+  </div>
+
+  <div class="about__text group">
+    <p class="about__text-desc">
+      <strong> Дорогие друзья,</strong>
+      <br /><br />
+      Каждый день в нашу клинику обращаются люди, оказавшиеся в трудной жизненной
+      ситуации. Кто-то борется с зависимостью сам, кто-то делает первый шаг по просьбе
+      близких, кто-то просто устал терпеть боль и одиночество. И каждый из них достоин
+      уважения и помощи.
+      <br /><br />
+      Клиника «Вера в нас» была создана с одной целью — возвращать людям жизнь. <strong
+        >Мы не просто снимаем симптомы, мы лечим человека</strong
+      > в целом: физически, эмоционально, душевно. За каждым вызовом, за каждым звонком
+      — реальная история, и мы относимся к каждой из них с вниманием, теплом и профессионализмом.
+      <br /><br />
+      <strong
+        >Моя команда — это врачи, которые не бросают пациента в трудный момент.</strong
+      > Мы остаемся рядом до полной стабилизации, и даем человеку шанс начать сначала.
+      Если вы читаете эти строки — значит, уже готовы сделать первый шаг. И мы готовы
+      идти рядом.
+      <br /><br />
+      С уважением и надеждой, <br />
+      <strong>Главный врач клиники «Вера в НАС» </strong>
+      <br />
+      <strong>Соколов Евгений Юрьевич</strong>
+    </p>
+    <Button href="/about" class="bg-primary">ПОДРОБНЕЕ О КЛИНИКЕ</Button>
+  </div>
+</Section>
+
+<style lang="scss" is:global>
+  @use "scss/helpers" as *;
+
+  .about {
+    position: relative;
+
+    .container {
+      flex-direction: row;
+      align-items: center;
+      gap: rem(20);
+
+      @include media("xl") {
+        flex-direction: column-reverse;
+        gap: rem(40);
+      }
+    }
+
+    &__left {
+      position: relative;
+      flex-grow: 1;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: rem(20);
+
+      @include media("sm") {
+        grid-template-columns: 1fr;
+        gap: rem(15);
+      }
+
+      &-video {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+
+        @include media("sm") {
+          height: rem(500);
+          order: 1;
+        }
+        @include media("xs") {
+          height: rem(400);
+        }
+
+        .group {
+          width: 100%;
+          align-items: center;
+          gap: rem(30);
+
+          @include media("xs") {
+            gap: rem(20);
+          }
+        }
+
+        .icon {
+          --icon-size: #{rem(100)};
+
+          @include media("xs") {
+            --icon-size: #{rem(80)};
+          }
+        }
+
+        p {
+          color: #fff;
+          font-size: rem(20);
+          text-align: center;
+
+          @include media("xs") {
+            font-size: rem(16);
+          }
+        }
+      }
+
+      &-img {
+        height: 100%;
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+    }
+
+    &__text {
+      width: 100%;
+      max-width: rem(890);
+      gap: rem(32);
+
+      @include media("3xl") {
+        max-width: rem(680);
+      }
+      @include media("2xl") {
+        max-width: rem(580);
+      }
+      @include media("xl") {
+        font-size: rem(16);
+        max-width: 100%;
+      }
+      @include media("xs") {
+        gap: rem(20);
+      }
+
+      &-desc {
+        font-family: var(--font-secondary);
+
+        @include media("3xl") {
+          font-size: rem(14);
+        }
+
+        strong:first-child {
+          font-size: rem(20);
+        }
+
+        strong {
+          color: var(--primary);
+        }
+      }
+
+      .btn {
+        @include media("xs", min-width) {
+          padding-inline: rem(34);
+        }
+      }
+    }
+  }
+</style>

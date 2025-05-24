@@ -207,6 +207,27 @@ if (header) {
   });
 }
 
+// stages
+const stages = document.querySelector(".stages");
+if (stages) {
+  const tabs = stages.querySelectorAll(".stages__list-item");
+  const items = stages.querySelectorAll(".stages__content-item");
+
+  tabs.forEach((tab, index) => {
+    tab.addEventListener("click", () => {
+      tabs.forEach((t) => t.classList.remove("active"));
+      items.forEach((i) => i.classList.remove("active"));
+
+      tab.classList.add("active");
+      items[index].classList.add("active");
+      window.scrollTo({
+        top: stages.offsetTop - 100, // Adjust the offset as needed
+        behavior: "smooth",
+      });
+    });
+  });
+}
+
 // Footer
 const currentYear = document.getElementById("current-year");
 if (currentYear) {

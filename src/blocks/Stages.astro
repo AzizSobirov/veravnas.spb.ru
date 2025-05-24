@@ -1,0 +1,166 @@
+---
+import { Section, H2, H3, P, Image, Icon, Button } from "ui";
+---
+
+<!-- Stages -->
+<Section name="stages">
+  <H2>Этапы <strong>лечебного процесса</strong></H2>
+
+  <div class="stages__wrapper">
+    <div class="stages__list group">
+      <div class="stages__list-item btn btn-primary bg-primary active">
+        Первичное обращение
+      </div>
+      <div class="stages__list-item btn btn-primary bg-primary">
+        Диагностика и план лечения
+      </div>
+      <div class="stages__list-item btn btn-primary bg-primary">
+        Детоксикация
+      </div>
+      <div class="stages__list-item btn btn-primary bg-primary">
+        Интенсивная терапевтическая программа
+      </div>
+      <div class="stages__list-item btn btn-primary bg-primary">
+        Восстановительный процесс
+      </div>
+      <div class="stages__list-item btn btn-primary bg-primary">
+        Амбулаторная реабилитация
+      </div>
+    </div>
+
+    <div class="stages__content">
+      {
+        Array.from({ length: 6 }).map((_, index) => (
+          <div
+            class="stages__content-item group"
+            class:list={{ active: index === 0 }}
+          >
+            <Image src="stages/1.png" />
+            <p>
+              Первичная консультация в клинике «Вера в НАС» проходит в
+              спокойной, конфиденциальной атмосфере, где человек чувствует себя
+              в безопасности. На этом этапе мы сосредотачиваем внимание на
+              выявлении глубинных потребностей, личных целей и степени
+              внутренней готовности к выздоровлению.
+              <br />
+              <br />
+              Врач подробно объясняет пациенту и его близким суть подхода
+              клиники, особенности предстоящего лечения. Родственники получают
+              практические рекомендации — как грамотно поддержать своего
+              близкого, сохранить с ним доверительный контакт и не навредить
+              непроизвольно.
+              <br />
+              <br />
+              Именно на этом этапе формируется основа будущего сотрудничества —
+              честного, чуткого и профессионального.
+              <>
+                <br />
+                <br />
+              </>
+              {index}
+            </p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</Section>
+
+<style lang="scss" is:global>
+  @use "scss/helpers" as *;
+
+  .stages {
+    position: relative;
+
+    &__wrapper {
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1.25fr;
+      gap: rem(20);
+
+      @include media("xl") {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    &__list {
+      padding: rem(40) rem(35);
+      width: 100%;
+      background: #fff;
+      box-shadow: 0 0 rem(38) 0 rgba(0, 0, 0, 0.15);
+      border-radius: rem(20);
+      gap: rem(15);
+
+      @include media("3xl") {
+        padding: rem(30) rem(25);
+      }
+      @include media("lg") {
+        padding: rem(30);
+      }
+      @include media("sm") {
+        padding: rem(15);
+        gap: rem(10);
+      }
+
+      &-item {
+        padding: rem(32) rem(40);
+        min-width: 100% !important;
+        width: 100% !important;
+        font-size: rem(20);
+        font-family: var(--font-primary);
+        text-transform: none;
+        border-radius: rem(15);
+        justify-content: space-between;
+        cursor: pointer;
+        white-space: unset !important;
+
+        &:not(.active) {
+          background: #5a90ae;
+        }
+
+        @include media("3xl") {
+          font-size: rem(18);
+        }
+        @include media("sm") {
+          padding: rem(20);
+          font-size: 1rem;
+          border-radius: rem(12);
+        }
+      }
+    }
+
+    &__content {
+      width: 100%;
+
+      @include media("xl") {
+        order: -1;
+      }
+
+      &-item {
+        gap: rem(40);
+
+        &:not(.active) {
+          display: none;
+        }
+
+        @include media("lg") {
+          gap: rem(20);
+        }
+
+        img {
+          width: 100%;
+          max-height: rem(400);
+          border-radius: rem(20);
+          object-fit: cover;
+
+          @include media("lg") {
+            max-height: rem(300);
+          }
+          @include media("sm") {
+            max-height: rem(240);
+          }
+        }
+      }
+    }
+  }
+</style>

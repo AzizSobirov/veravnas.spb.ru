@@ -305,6 +305,31 @@ let licenseSwiper = new Swiper(".license .license__swiper", {
   },
 });
 
+let reviewsSwiper = new Swiper(".reviews .reviews__list .swiper", {
+  slidesPerView: "auto",
+  spaceBetween: 12,
+  navigation: {
+    nextEl: ".reviews .reviews__list .swiper-button-next",
+    prevEl: ".reviews .reviews__list .swiper-button-prev",
+  },
+  pagination: {
+    el: ".reviews .reviews__list .swiper-pagination",
+    clickable: true,
+  },
+  breakpoints: {
+    475: {
+      spaceBetween: 15,
+    },
+    640: {
+      spaceBetween: 20,
+    },
+    1280: {
+      slidesPerView: 3,
+      spaceBetween: 20,
+    },
+  },
+});
+
 // Initialize the fancybox
 const fancyboxTriggers = Array.from(
   document.querySelectorAll("[data-fancybox]")

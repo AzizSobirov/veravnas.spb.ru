@@ -1,0 +1,226 @@
+---
+import { Section, H2, H3, P, Image, Icon, Button } from "ui";
+---
+
+<!-- Reviews -->
+<Section name="reviews">
+  <H2>ОТЗЫВЫ <strong>НАШИХ ПАЦИЕНТОВ</strong></H2>
+
+  <div class="reviews__list">
+    <div class="swiper">
+      <div class="swiper-wrapper">
+        {
+          Array.from({ length: 6 }).map((_, index) => (
+            <div class="swiper-slide reviews__item group">
+              <p>
+                Мой муж наркоман, я его всю жизнь лечила и безуспешно, крайний
+                раз ему было совсем плохо, и я вызвала бригаду для снятия ломки
+                из этой клиники. Все в себе причины искала, думала, что смогу
+                его вытащить из этой пропасти. Психотерапевты этой клиники мне
+                все разъяснили – у меня созависимость, подсознательно я сама
+                провоцирую его срывы! Прошла курс психотерапии, мужу поставила
+                условие – либо он ложится в реабилитацию, либо разводимся и я
+                умываю руки. Муж на лечение согласился и лег в реабилитацию.
+              </p>
+              <div class="group-row">
+                <div class="reviews__item-title">Алина</div>
+                <p class="reviews__item-date">03.03.2025</p>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+
+    <div class="swiper-pagination"></div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+  </div>
+
+  <div class="reviews__more">
+    Все отзывы опубликованы с разрешения пациентов или их родных. Имена изменены
+    в соответствии с политикой анонимности клиники.
+  </div>
+</Section>
+
+<style lang="scss" is:global>
+  @use "scss/helpers" as *;
+
+  .reviews {
+    position: relative;
+
+    &__list {
+      position: relative;
+      width: 100%;
+
+      .swiper {
+        margin: rem(-50);
+        padding: rem(50);
+        width: 100%;
+        box-sizing: content-box;
+        overflow: hidden;
+
+        @include media("xl") {
+          overflow: visible;
+        }
+      }
+
+      .swiper-slide {
+        transition: opacity var(--transition-ease);
+        opacity: 0;
+      }
+
+      .swiper-button-next,
+      .swiper-button-prev {
+        margin: 0 !important;
+        transform: translateY(-50%);
+        width: rem(70);
+        height: rem(70);
+        color: #fff;
+        background: var(--primary);
+        border-radius: 50%;
+        --swiper-navigation-sides-offset: #{rem(-35)};
+
+        @include media("3xl") {
+          --swiper-navigation-sides-offset: #{rem(-30)};
+          width: rem(60);
+          height: rem(60);
+        }
+        @include media("xl") {
+          display: none !important;
+        }
+
+        &::after {
+          font-size: rem(28);
+        }
+      }
+
+      .swiper-button-disabled {
+        display: none;
+      }
+
+      .swiper-pagination {
+        position: absolute !important;
+        bottom: rem(-50);
+        z-index: 2 !important;
+        --swiper-pagination-bullet-width: #{rem(15)};
+        --swiper-pagination-bullet-height: #{rem(15)};
+        --swiper-theme-color: var(--primary);
+        --swiper-pagination-bullet-horizontal-gap: #{rem(6)};
+
+        @include media("xl") {
+          --swiper-pagination-bullet-width: #{rem(12)};
+          --swiper-pagination-bullet-height: #{rem(12)};
+          --swiper-pagination-bullet-horizontal-gap: #{rem(5)};
+        }
+        @include media("lg") {
+          bottom: rem(-40);
+        }
+        @include media("xs") {
+          --swiper-pagination-bullet-width: #{rem(10)};
+          --swiper-pagination-bullet-height: #{rem(10)};
+          --swiper-pagination-bullet-horizontal-gap: #{rem(4)};
+        }
+      }
+
+      @include media(rem(1280), min-width) {
+        .swiper-slide-active,
+        .swiper-slide-next,
+        .swiper-slide-next + div,
+        .swiper-slide-next + div + div {
+          opacity: 1;
+        }
+      }
+
+      @include media("xl") {
+        .swiper-slide {
+          opacity: 1;
+        }
+      }
+    }
+
+    &__item {
+      padding: rem(20);
+      width: 100%;
+      background: #fff;
+      box-shadow: 0 0 rem(50) 0 rgba(0, 0, 0, 0.15);
+      border-radius: rem(20);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: rem(20);
+
+      @include media("xl") {
+        width: rem(420);
+
+        & > p {
+          font-size: rem(14);
+        }
+      }
+      @include media("sm") {
+        width: rem(320);
+        box-shadow: 0 0 rem(20) 0 rgba(0, 0, 0, 0.15);
+      }
+      @include media("xs") {
+        padding: rem(12);
+        width: rem(280);
+        border-radius: rem(15);
+
+        & > p {
+          font-size: rem(12);
+        }
+      }
+      @include media("xxs") {
+        width: rem(260);
+      }
+
+      .group-row {
+        width: 100%;
+        justify-content: space-between;
+        gap: rem(20);
+      }
+
+      &-title {
+        font-size: rem(20);
+        font-weight: 700;
+        line-height: 1.2;
+        color: var(--primary);
+
+        @include media("xl") {
+          font-size: rem(18);
+        }
+        @include media("xs") {
+          font-size: rem(16);
+        }
+      }
+
+      &-date {
+        color: var(--primary);
+
+        @include media("xl") {
+          font-size: rem(14);
+        }
+      }
+    }
+
+    &__more {
+      margin-top: rem(30);
+      padding: rem(15);
+      width: 100%;
+      font-family: var(--font-secondary);
+      font-size: rem(16);
+      color: #fff;
+      text-align: center;
+      background: var(--primary);
+      border-radius: rem(15);
+
+      @include media("lg") {
+        margin-top: rem(40);
+      }
+      @include media("sm") {
+        font-size: rem(14);
+      }
+    }
+  }
+</style>

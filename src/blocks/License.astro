@@ -1,0 +1,156 @@
+---
+import { Section, H2, H3, P, Image, Icon, Button } from "ui";
+---
+
+<!-- License -->
+<Section name="license">
+  <H2>лицензия <strong>клиники</strong></H2>
+
+  <div class="license__content">
+    <div class="license__list">
+      {
+        Array.from({ length: 6 }).map((_, index) => (
+          <div
+            class="license__list-item"
+            class:list={{
+              hidden: index >= 4,
+            }}
+            data-fancybox="license"
+            data-src={`/assets/img/license/${index + 1}.jpg`}
+            style={`--i:${index + 1}`}
+          >
+            <Image src={`license/${index + 1}.jpg`} />
+          </div>
+        ))
+      }
+    </div>
+
+    <div class="license__swiper swiper">
+      <div class="swiper-wrapper">
+        {
+          Array.from({ length: 6 }).map((_, index) => (
+            <div
+              class="swiper-slide"
+              data-fancybox="license"
+              data-src={`/assets/img/license/${index + 1}.jpg`}
+            >
+              <Image src={`license/${index + 1}.jpg`} />
+            </div>
+          ))
+        }
+      </div>
+    </div>
+
+    <div class="license__text">
+      <P>
+        <strong>
+          Клиника «Вера в НАС» работает более 10 лет официально, на основании
+          лицензии и имеет все необходимые разрешения на лечение пациентов с
+          зависимостями.
+        </strong>
+        <br /><br />
+        Официальный статус дает возможность использовать в своей работе эффективные
+        медикаментозные средства. Врач, выезжая на вызов, имеет с собой все необходимые
+        препараты, в том числе и рецептурные – антидепрессанты, транквилизаторы,
+        снотворные и ноотропы, что позволяет эффективно оказывать помощь любому пациенту
+        с алкогольной и наркотической зависимостью.
+      </P>
+    </div>
+  </div>
+</Section>
+
+<style lang="scss" is:global>
+  @use "scss/helpers" as *;
+
+  .license {
+    position: relative;
+
+    &__content {
+      width: 100%;
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: rem(20);
+
+      @include media("xl") {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    &__list {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+
+      @include media("lg") {
+        display: none;
+      }
+
+      &-item {
+        width: 35.5%;
+        height: rem(600);
+        z-index: calc(4 - var(--i));
+
+        @include media("3xl") {
+          height: rem(500);
+        }
+
+        img {
+          width: 100%;
+          height: 100%;
+          border-radius: rem(20);
+          box-shadow: 0 0 65px 0 rgba(0, 0, 0, 0.25);
+          object-fit: cover;
+        }
+      }
+
+      &-item:not(:first-child) {
+        position: absolute;
+        left: 0;
+        margin-left: -20.5%;
+        transform: translateX(calc(var(--i) * 60%));
+      }
+    }
+
+    &__swiper {
+      position: relative;
+      width: 100%;
+      display: none;
+      overflow: visible;
+
+      @include media("lg") {
+        display: grid;
+      }
+
+      .swiper-wrapper {
+        min-width: 0 !important;
+      }
+
+      .swiper-slide {
+        width: rem(320);
+        height: rem(450);
+
+        @include media("xs") {
+          width: rem(280);
+          height: rem(400);
+        }
+      }
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: rem(20);
+      }
+    }
+
+    &__text {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      gap: rem(20);
+    }
+  }
+</style>

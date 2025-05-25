@@ -1,0 +1,112 @@
+---
+import { Section, H2, H3, P, Image, Icon, Button } from "ui";
+---
+
+<!-- Gallery -->
+<Section name="gallery">
+  <H2>ФОТО <strong>Клиники</strong></H2>
+  <div class="gallery__list">
+    <div class="swiper">
+      <div class="swiper-wrapper">
+        {
+          Array.from({ length: 12 }).map((_, index) => (
+            <div class="swiper-slide">
+              <Image src={`gallery/${index % 2 ? 1 : 2}.png`} />
+            </div>
+          ))
+        }
+      </div>
+    </div>
+
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+  </div>
+</Section>
+
+<style lang="scss" is:global>
+  @use "scss/helpers" as *;
+
+  .gallery {
+    position: relative;
+
+    &__list {
+      position: relative;
+      width: 100%;
+
+      .swiper {
+        width: 100%;
+        height: 550px;
+      }
+
+      .swiper-slide {
+        width: 185px;
+        height: 100%;
+        transition: var(--transition-ease);
+
+        &:nth-child(odd) {
+          padding-bottom: 40px;
+        }
+        &:nth-child(even) {
+          padding-top: 40px;
+        }
+
+        &.swiper-slide-active {
+          padding: 0 !important;
+          width: 745px;
+
+          img {
+            height: 100%;
+            opacity: 1;
+          }
+
+          span {
+            opacity: 1;
+          }
+        }
+
+        img {
+          width: 100%;
+          height: calc(100% - rem(40));
+          border-radius: rem(20);
+          object-fit: cover;
+          opacity: 0.8;
+          transition: var(--transition-ease);
+        }
+
+        span {
+          position: absolute;
+          bottom: rem(20);
+          left: rem(20);
+          width: calc(100% - rem(40));
+          color: #fff;
+          font-size: rem(24);
+          opacity: 0;
+          transition: var(--transition-ease);
+        }
+      }
+
+      .swiper-button-prev,
+      .swiper-button-next {
+        margin: 0 !important;
+        transform: translateY(-50%);
+        background: var(--primary);
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+
+        &:hover {
+          background: rgba(0, 0, 0, 0.8);
+        }
+
+        &::after {
+          color: #fff;
+          font-size: rem(20);
+        }
+
+        &.swiper-button-disabled {
+          display: none;
+        }
+      }
+    }
+  }
+</style>

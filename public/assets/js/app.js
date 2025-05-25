@@ -235,7 +235,7 @@ if (currentYear) {
 }
 
 // Swipers
-const directionsSwiper = new Swiper(".directions .directions__list", {
+let directionsSwiper = new Swiper(".directions .directions__list", {
   slidesPerView: "auto",
   spaceBetween: 12,
   breakpoints: {
@@ -255,33 +255,55 @@ const directionsSwiper = new Swiper(".directions .directions__list", {
   },
 });
 
-const specialistsSwiper = new Swiper(
-  ".specialists .specialists__list .swiper",
-  {
-    slidesPerView: "auto",
-    spaceBetween: 12,
-    navigation: {
-      nextEl: ".specialists .specialists__list .swiper-button-next",
-      prevEl: ".specialists .specialists__list .swiper-button-prev",
+let specialistsSwiper = new Swiper(".specialists .specialists__list .swiper", {
+  slidesPerView: "auto",
+  spaceBetween: 12,
+  navigation: {
+    nextEl: ".specialists .specialists__list .swiper-button-next",
+    prevEl: ".specialists .specialists__list .swiper-button-prev",
+  },
+  breakpoints: {
+    475: {
+      spaceBetween: 15,
     },
-    breakpoints: {
-      475: {
-        spaceBetween: 15,
-      },
-      640: {
-        spaceBetween: 20,
-      },
-      1280: {
-        slidesPerView: 3,
-        spaceBetween: 20,
-      },
-      1680: {
-        slidesPerView: 4,
-        spaceBetween: 20,
-      },
+    640: {
+      spaceBetween: 20,
     },
-  }
-);
+    1280: {
+      slidesPerView: 3,
+      spaceBetween: 20,
+    },
+    1680: {
+      slidesPerView: 4,
+      spaceBetween: 20,
+    },
+  },
+});
+
+let gallerySwiper = new Swiper(".gallery .gallery__list .swiper", {
+  slidesPerView: "auto",
+  spaceBetween: 12,
+  allowTouchMove: false,
+  navigation: {
+    nextEl: ".gallery .gallery__list .swiper-button-next",
+    prevEl: ".gallery .gallery__list .swiper-button-prev",
+  },
+  breakpoints: {
+    475: {
+      spaceBetween: 20,
+    },
+  },
+});
+
+let licenseSwiper = new Swiper(".license .license__swiper", {
+  slidesPerView: "auto",
+  spaceBetween: 15,
+  breakpoints: {
+    475: {
+      spaceBetween: 20,
+    },
+  },
+});
 
 // Initialize the fancybox
 const fancyboxTriggers = Array.from(

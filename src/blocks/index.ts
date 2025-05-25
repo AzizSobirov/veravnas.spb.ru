@@ -2,6 +2,7 @@ export { default as About } from "./About.astro";
 export { default as Application } from "./Application.astro";
 export { default as Callback } from "./Callback.astro";
 export { default as Directions } from "./Directions.astro";
+export { default as Faq } from "./Faq.astro";
 export { default as Gallery } from "./Gallery.astro";
 export { default as Hero } from "./Hero.astro";
 export { default as License } from "./License.astro";

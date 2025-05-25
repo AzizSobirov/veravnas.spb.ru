@@ -1,0 +1,47 @@
+---
+import { Section, H2, H3, P, Image, Icon, Button, Accordion } from "ui";
+import { faqs } from "store";
+---
+
+<!-- Faq -->
+<Section name="faq">
+  <H2>часто <strong>задаваемые вопросы</strong></H2>
+
+  <div class="faq__list" data-accordion>
+    {
+      faqs.map((faq) => (
+        <Accordion title={faq}>
+          <p>
+            Лечиться от любого типа зависимости – алкоголизма или наркомании –
+            нужно у профессионалов, в наркологической клинике. Естественно,
+            клиника должна иметь лицензию и хорошие отзывы от своих пациентов и
+            их родственников.
+          </p>
+        </Accordion>
+      ))
+    }
+  </div>
+</Section>
+
+<style lang="scss" is:global>
+  @use "scss/helpers" as *;
+
+  .faq {
+    position: relative;
+
+    &__list {
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: rem(35) rem(150);
+
+      @include media("3xl") {
+        gap: rem(25) rem(100);
+      }
+      @include media("xl") {
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
+    }
+  }
+</style>

@@ -12,7 +12,7 @@
     background: #fff;
   }
 
-  @include media("lg") {
+  @include media("xl") {
     position: static;
   }
 
@@ -131,7 +131,7 @@
     @include media("3xl") {
       padding: rem(15) 0;
     }
-    @include media("lg") {
+    @include media("xl") {
       display: none;
     }
 
@@ -243,7 +243,7 @@
   display: none;
   z-index: 10;
 
-  @include media("lg") {
+  @include media("xl") {
     display: flex;
   }
   @include media("xs") {

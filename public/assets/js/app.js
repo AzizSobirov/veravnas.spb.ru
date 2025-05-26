@@ -98,7 +98,7 @@ if (header) {
     const subMenu = service.querySelector(".sub-menu");
 
     service.addEventListener("mouseenter", () => {
-      subMenu.style.display = "grid"; // Ensure the submenu is visible
+      subMenu.style.display = "flex"; // Ensure the submenu is visible
 
       setTimeout(() => {
         subMenu.dataset.state = "active";
@@ -174,14 +174,23 @@ if (header) {
         }
 
         if (tab.dataset.toggle == "menu") {
-          let html = menu.querySelector(".menu");
-          tabsContent.innerHTML = html.outerHTML;
+          tabsContent.innerHTML = `
+            <ul class="menu">
+            <li class="menu-item "><a href="/">Главная</a> </li>
+                 <li class="menu-item "><a href="/about">О клинике </a> </li>
+                      <li class="menu-item "><a href="/contacts">Контакты</a> </li>
+            </ul>
+          `;
         } else if (tab.dataset.toggle == "catalog") {
-          let menuServices = menu.querySelector(
-            ".menu-item-has-children .sub-menu"
-          );
+          const html = Array.from(services)
+            .map((service) => service.outerHTML)
+            .join("");
 
-          tabsContent.innerHTML = menuServices.outerHTML;
+          tabsContent.innerHTML = `
+            <ul class="menu">
+            ${html}
+            </ul>
+          `;
         }
       }
     });

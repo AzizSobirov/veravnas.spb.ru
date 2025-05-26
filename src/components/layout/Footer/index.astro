@@ -1,74 +1,107 @@
 ---
-import { Image, Icon, H3 } from "ui";
+import { Image, Icon, H3, Button } from "ui";
 ---
 
 <footer class="footer">
+  <div class="footer__map">
+    <div class="container">
+      <div class="footer__map-contacts group">
+        <div class="group">
+          <strong>Режим работы:</strong>
+          <p>Ежедневно, круглосуточно</p>
+        </div>
+        <div class="group">
+          <strong>Телефон:</strong>
+          <a href="tel:+78129241222" target="_blank" title="Телефон">
+            +7 (812) 924-12-22
+          </a>
+        </div>
+        <div class="group">
+          <strong>Адрес:</strong>
+          <p>195265, г. Санкт-Петербург,<br /> шоссе Революции, 88Н</p>
+        </div>
+
+        <div class="group-row">
+          <a href="#" target="_blank" title="WhatsApp">
+            <Icon src="whatsapp-2.svg" />
+          </a>
+          <a href="#" target="_blank" title="Telegram">
+            <Icon src="telegram-2.svg" />
+          </a>
+        </div>
+
+        <Button data-modal="form">Оставить заявку</Button>
+      </div>
+    </div>
+
+    <iframe
+      src="https://yandex.uz/map-widget/v1/?ll=30.466209%2C59.962468&mode=search&oid=1737124203&ol=biz&z=15.52"
+      allowfullscreen="true"></iframe>
+  </div>
+
   <div class="container">
     <div class="footer__top">
+      <a href="/" class="footer__logo">
+        <Image src="logo.svg" />
+      </a>
+
       <ul class="menu">
+        <li class="menu-item"><a href="/services">Лечение алкоголизма</a></li>
+        <li class="menu-item">
+          <a href="/services">Наркологическая помощь </a>
+        </li>
+        <li class="menu-item">
+          <a href="/services">Выведение из запоя</a>
+        </li>
+        <li class="menu-item">
+          <a href="/services">Лечение наркомании</a>
+        </li>
+        <li class="menu-item">
+          <a href="/services">Лечение игромании</a>
+        </li>
+        <li class="menu-item">
+          <a href="/services">Реабилитация</a>
+        </li>
+        <li class="menu-item">
+          <a href="/services">Психиатрическая клиника</a>
+        </li>
+        <li class="menu-item">
+          <a href="/services">Анализ на наркотики</a>
+        </li>
         <li class="menu-item active"><a href="/">Главная</a></li>
-        <li class="menu-item"><a href="/catalog">Каталог</a></li>
-        <li class="menu-item"><a href="/services">Услуги</a></li>
-        <li class="menu-item"><a href="/portfolio">Наши работы </a></li>
+        <li class="menu-item"><a href="/about">О клинике</a></li>
         <li class="menu-item"><a href="/contacts">Контакты</a></li>
       </ul>
 
-      <a href="/" class="footer__logo">
-        <Image src="logo-dark.svg" />
-      </a>
-
-      <div class="footer__top-right">
-        <div class="footer__contact">
-          <div class="footer__contact-city">
-            <Icon src="location.svg" />
-            Москва
-          </div>
+      <div class="footer__top-right group">
+        <div class="application__content-contact group-row">
           <a
-            href="tel:+79854343433"
+            class="application__content-phone"
+            href="tel:+78129241222"
             target="_blank"
-            class="footer__contact-phone"
             title="Телефон"
           >
-            +7 (985) 434-34-33
+            +7 (812) 924-12-22
           </a>
-          <p class="footer__contact-address">
-            Варшавское шоссе, 150, корп. 2 БЦ “Селектика”
-          </p>
-        </div>
 
-        <div class="footer__contact">
-          <div class="footer__contact-city">
-            <Icon src="location.svg" />
-            Санкт-Петербург
+          <div class="group-row">
+            <a href="#" target="_blank" title="WhatsApp">
+              <Icon src="whatsapp-2.svg" />
+            </a>
+            <a href="#" target="_blank" title="Telegram">
+              <Icon src="telegram-2.svg" />
+            </a>
           </div>
-          <a
-            href="tel:+79990210070"
-            target="_blank"
-            class="footer__contact-phone"
-            title="Телефон"
-          >
-            +7 (999) 021-00-70
-          </a>
-          <p class="footer__contact-address">
-            Ул. Зольная, д.15 БЦ  “Морская столица”
-          </p>
         </div>
-
-        <div class="footer__socials">
-          <a href="#" class="icon" target="_blank">
-            <Image src="icons/vk-dark.svg" />
-          </a>
-          <a href="#" class="icon" target="_blank">
-            <Image src="icons/whatsapp-dark.svg" />
-          </a>
-          <a href="#" class="icon" target="_blank">
-            <Image src="icons/telegram-dark.svg" />
-          </a>
-        </div>
+        <p>Работаем по г.Санкт-петербург и по всей Ленинградской области</p>
       </div>
     </div>
 
     <div class="footer__bottom">
+      <p>
+        <span id="currentYear">2025.</span> veravnas.spb.ru. Все права защищены
+      </p>
+
       <a
         href="https://seo-tex.ru/"
         target="_blank"
@@ -93,8 +126,6 @@ import { Image, Icon, H3 } from "ui";
           и продвижение
         </span>
       </a>
-
-      <p>© ProfStek <span id="currentYear">2025</span></p>
     </div>
   </div>
 </footer>
@@ -103,171 +134,201 @@ import { Image, Icon, H3 } from "ui";
   @use "scss/helpers" as *;
 
   .footer {
-    margin-top: rem(50);
-    padding: rem(50) 0 rem(80);
-    color: #fff;
-    background: var(--text-color);
+    padding: rem(50) 0;
 
     @include media("xl") {
       padding-bottom: rem(120);
     }
     @include media("sm") {
-      margin-top: rem(25);
-      padding: rem(35) 0 rem(120);
+      padding: rem(35) 0 rem(100);
     }
 
-    .container {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: rem(50);
+    &__map {
+      position: relative;
+      padding: rem(48) 0 rem(88);
+
+      @include media("lg") {
+        padding: 0;
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 2;
+        width: 100%;
+        height: 100%;
+        background: rgba(9, 136, 208, 0.2);
+        pointer-events: none;
+
+        @include media("lg") {
+          display: none;
+        }
+      }
+
+      iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: none;
+
+        @include media("lg") {
+          position: relative;
+          height: rem(500);
+        }
+        @include media("sm") {
+          height: rem(400);
+        }
+        @include media("xs") {
+          height: rem(300);
+        }
+      }
+
+      &-contacts {
+        position: relative;
+        z-index: 3;
+        padding: rem(55) rem(36) rem(48);
+        width: 100%;
+        max-width: rem(450);
+        font-family: var(--font-secondary);
+        text-transform: uppercase;
+        background: #fff;
+        border-radius: rem(20);
+        gap: rem(24);
+
+        @include media("lg") {
+          max-width: 100%;
+          border-radius: rem(20) rem(20) 0 0;
+        }
+        @include media("sm") {
+          padding: rem(20) rem(20) rem(30);
+          gap: rem(20);
+        }
+      }
+
+      .group-row {
+        gap: rem(12);
+        --icon-size: #{rem(36)};
+      }
+
+      strong {
+        margin-bottom: rem(4);
+        color: var(--primary);
+      }
+
+      .btn {
+        padding: rem(22) rem(45);
+        border-radius: 9999px;
+      }
     }
 
     &__top {
+      margin-top: rem(45);
+      padding: rem(30) 0 rem(20);
       width: 100%;
-      display: grid;
-      grid-template-columns: 1fr rem(188) 1fr;
-      gap: rem(65);
+      border-top: rem(2) solid var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: rem(50);
 
       @include media("xl") {
-        display: flex;
         flex-wrap: wrap;
       }
       @include media("lg") {
         flex-direction: column;
-        align-items: center;
-        gap: rem(40);
+        align-items: flex-start;
+      }
+      @include media("sm") {
+        margin-top: rem(25);
+        padding: rem(20) 0;
+        border-width: rem(1);
+        gap: rem(30);
       }
 
       &-right {
-        display: flex;
-        align-items: center;
-        justify-content: flex-start;
+        align-items: flex-end;
         gap: rem(20);
 
-        @include media("3xl") {
-          flex-wrap: wrap;
-        }
         @include media("xl") {
-          order: -1;
+          align-items: flex-start;
         }
-        @include media("lg") {
-          width: 100%;
-          order: unset;
-        }
-      }
-    }
 
-    .menu {
-      display: flex;
-      align-items: center;
-      justify-content: flex-start;
-      gap: rem(40);
+        p {
+          text-align: right;
+          max-width: rem(380);
+          font-weight: 600;
+          font-family: var(--font-secondary);
 
-      @include media("3xl") {
-        gap: rem(25);
-      }
-      @include media("sm") {
-        flex-direction: column;
-      }
-
-      &-item {
-        & > a {
-          font-size: rem(20);
-          transition: var(--transition-ease);
-
-          @include media("3xl") {
-            font-size: rem(17);
+          @include media("xl") {
+            text-align: left;
+          }
+          @include media("sm") {
+            font-size: rem(14);
           }
         }
+      }
 
-        &:hover a {
+      .menu {
+        height: rem(150);
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        justify-content: flex-start;
+        gap: rem(20) rem(70);
+
+        @include media("3xl") {
+          height: rem(240);
+        }
+        @include media("lg") {
+          height: auto;
+        }
+        @include media("sm") {
+          font-size: rem(14);
+          gap: rem(15);
+        }
+
+        a {
           color: var(--primary);
-          border-bottom: rem(1) dashed var(--primary);
+          font-family: var(--font-secondary);
+          font-weight: 700;
         }
       }
     }
 
     &__logo {
-      width: rem(188);
       display: block;
+      width: rem(110);
 
-      @include media("xl") {
-        order: -2;
-      }
-      @include media("lg") {
-        width: rem(180);
-      }
       @include media("sm") {
-        width: rem(160);
+        width: rem(80);
       }
 
       img {
         width: 100%;
-        object-fit: contain;
-      }
-    }
-
-    &__contact {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: rem(2);
-
-      @include media("3xl") {
-        flex: 1 0 rem(120);
-      }
-      @include media("sm") {
-        flex-basis: 100%;
-        align-items: center;
-        text-align: center;
-        gap: rem(6);
-      }
-
-      &-city {
-        margin-bottom: rem(4);
-        font-weight: 600;
-        display: flex;
-        align-items: center;
-        justify-content: flex-start;
-        gap: rem(5);
-        --icon-size: #{rem(20)};
-      }
-
-      &-address {
-        font-size: rem(12);
-      }
-    }
-
-    &__socials {
-      display: flex;
-      align-items: center;
-      justify-content: flex-start;
-      gap: rem(20);
-      --icon-size: #{rem(38)};
-
-      @include media("3xl") {
-        width: 100%;
-      }
-      @include media("sm") {
-        margin-top: rem(10);
-        justify-content: center;
       }
     }
 
     &__bottom {
-      padding-top: rem(25);
-      width: 100%;
-      border-top: rem(1) solid #fff;
       display: flex;
-      align-items: center;
-      justify-content: space-between;
+      flex-direction: column;
+      align-items: flex-start;
       gap: rem(20);
+
+      & > p {
+        font-size: rem(12);
+        font-weight: 600;
+        font-family: var(--font-secondary);
+      }
     }
 
     &__dev {
       margin-top: auto;
-      color: #a6a6a6;
+      color: #555555;
       font-size: 0.75rem;
       font-weight: 400;
       display: flex;

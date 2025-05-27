@@ -133,6 +133,10 @@ const {
       max-width: rem(865);
       gap: rem(30);
 
+      @include media("2xl") {
+        max-width: rem(680);
+      }
+
       &:has(.text-hero) {
         gap: 0;
 
@@ -326,6 +330,39 @@ const {
         @include media("sm") {
           --height: #{rem(340)};
           transform: translate(20%, -20%);
+        }
+      }
+
+      .img-2 {
+        transform: translate(10%, -70%);
+        --height: #{rem(600)};
+
+        @include media("3xl") {
+          transform: translate(15%, -80%);
+          --height: #{rem(550)};
+        }
+        @include media("2xl") {
+          transform: translate(15%, -100%);
+          --height: #{rem(550)};
+        }
+        @include media("xl") {
+          transform: translate(20%, -100%);
+          --height: #{rem(400)};
+        }
+        @include media("lg") {
+          --height: #{rem(380)};
+          transform: translate(0%, 5%);
+        }
+        @include media("md") {
+          transform: translate(10%, 5%);
+        }
+        @include media("sm") {
+          --height: #{rem(280)};
+          transform: translate(70%, -10%);
+        }
+        @include media("xs") {
+          --height: #{rem(260)};
+          transform: translate(35%, -15%);
         }
       }
     }

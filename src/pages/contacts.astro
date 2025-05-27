@@ -1,0 +1,29 @@
+---
+import App from "../App.astro";
+import * as Blocks from "@/blocks";
+---
+
+<App title="Контакты">
+  <main>
+    <section class="contacts">
+      <div class="container">
+        <div class="text-h2"><strong>Контакты</strong></div>
+      </div>
+    </section>
+  </main>
+</App>
+
+<style lang="scss" is:global>
+  @use "scss/helpers" as *;
+
+  .contacts {
+    padding-top: rem(100) !important;
+
+    @include media("3xl") {
+      padding: rem(80) 0 rem(40) !important;
+    }
+    @include media("lg") {
+      padding: rem(60) 0 0 !important;
+    }
+  }
+</style>

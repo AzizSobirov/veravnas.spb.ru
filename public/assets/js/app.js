@@ -330,14 +330,14 @@ let specialistsSwiper = new Swiper(".specialists .specialists__list .swiper", {
 let gallerySwiper = new Swiper(".gallery .gallery__list .swiper", {
   slidesPerView: "auto",
   spaceBetween: 12,
-  // allowTouchMove: false,
   navigation: {
     nextEl: ".gallery .gallery__list .swiper-button-next",
     prevEl: ".gallery .gallery__list .swiper-button-prev",
   },
   breakpoints: {
-    475: {
+    1025: {
       spaceBetween: 20,
+      slidesPerView: 3,
     },
   },
 });

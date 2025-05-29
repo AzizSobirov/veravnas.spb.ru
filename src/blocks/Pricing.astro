@@ -1,0 +1,186 @@
+---
+import { Section, H2, H3, P, Image, Icon, Button } from "ui";
+---
+
+<!-- Pricing -->
+<Section name="pricing">
+  <H2>стоимость <strong>Услуг</strong></H2>
+
+  <ul class="pricing__list">
+    <li class="pricing__item">
+      <div class="pricing__item-title">Выезд нарколога</div>
+      <div class="pricing__item-aksiya"><span>Акция до 1 июля</span></div>
+
+      <div class="pricing__item-group group">
+        <div class="pricing__item-realprice">1 500 ₽</div>
+        <div class="pricing__item-price">БЕСПЛАТНО</div>
+      </div>
+
+      <Button data-modal="form">Оставить заявку</Button>
+    </li>
+
+    <li class="pricing__item">
+      <div class="pricing__item-title">Базовая капельница</div>
+
+      <div class="pricing__item-group group">
+        <div class="pricing__item-realprice">3 500 ₽</div>
+        <div class="pricing__item-price">от 2 100 ₽</div>
+      </div>
+
+      <Button data-modal="form">Оставить заявку</Button>
+    </li>
+
+    <li class="pricing__item">
+      <div class="pricing__item-title">Комплексная капельница</div>
+
+      <div class="pricing__item-group group">
+        <div class="pricing__item-price">от 3 600 ₽</div>
+      </div>
+
+      <Button data-modal="form">Оставить заявку</Button>
+    </li>
+
+    <li class="pricing__item">
+      <div class="pricing__item-title">Выезд нарколога</div>
+      <div class="pricing__item-aksiya"><span>Акция до 1 июля</span></div>
+
+      <div class="pricing__item-group group">
+        <div class="pricing__item-realprice">1 500 ₽</div>
+        <div class="pricing__item-price">БЕСПЛАТНО</div>
+      </div>
+
+      <Button data-modal="form">Оставить заявку</Button>
+    </li>
+
+    <li class="pricing__item">
+      <div class="pricing__item-title">Базовая капельница</div>
+
+      <div class="pricing__item-group group">
+        <div class="pricing__item-realprice">3 500 ₽</div>
+        <div class="pricing__item-price">от 2 100 ₽</div>
+      </div>
+
+      <Button data-modal="form">Оставить заявку</Button>
+    </li>
+
+    <li class="pricing__item">
+      <div class="pricing__item-title">
+        Рекомендуемая с индивидуальным подбором препаратов
+      </div>
+
+      <div class="pricing__item-group group">
+        <div class="pricing__item-price">от 4500 ₽ до 50 000 ₽</div>
+      </div>
+
+      <Button data-modal="form">Оставить заявку</Button>
+    </li>
+  </ul>
+</Section>
+
+<style lang="scss" is:global>
+  @use "scss/helpers" as *;
+
+  .pricing {
+    position: relative;
+
+    &__list {
+      width: 100%;
+    }
+
+    &__item {
+      position: relative;
+      padding: rem(14) rem(16) rem(14) 0;
+      width: 100%;
+      border-bottom: rem(1) solid #d9d9d9;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: rem(58);
+
+      @include media("xl") {
+        gap: rem(30);
+      }
+      @include media("lg") {
+        padding-right: rem(0);
+        flex-wrap: wrap;
+        gap: rem(15) rem(30);
+      }
+
+      &-title {
+        flex-grow: 1;
+        font-size: clamp(1rem, 0.9712rem + 0.1282vw, 1.125rem);
+        font-family: var(--font-secondary);
+
+        @include media("lg") {
+          flex-basis: 100%;
+        }
+      }
+
+      &-aksiya {
+        span {
+          padding: rem(5) rem(10);
+          color: #fff;
+          font-size: rem(14);
+          background: linear-gradient(324deg, #3db793 0%, #0c8bcd 100%);
+          border-radius: 9999px;
+        }
+
+        @include media("lg") {
+          flex-basis: 100%;
+          order: -1;
+        }
+      }
+
+      &-group {
+        min-width: rem(280);
+        text-align: left;
+
+        @include media("xl") {
+          min-width: rem(240);
+        }
+        @include media("lg") {
+          min-width: auto;
+        }
+      }
+
+      &-realprice {
+        color: #bebebe;
+        font-size: rem(12);
+        text-decoration: line-through;
+      }
+
+      &-price {
+        color: var(--primary);
+        font-size: rem(20);
+
+        @include media("xs") {
+          font-size: rem(18);
+        }
+      }
+
+      .btn {
+        padding: rem(10) rem(18) !important;
+        min-width: auto !important;
+        font-size: rem(14) !important;
+        gap: rem(15) !important;
+
+        @include media("lg") {
+          margin-left: auto;
+        }
+        @include media("xs") {
+          padding: rem(10) rem(14);
+        }
+
+        &::after {
+          min-width: rem(24) !important;
+          width: rem(24) !important;
+          height: rem(8) !important;
+
+          @include media("xs") {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+</style>

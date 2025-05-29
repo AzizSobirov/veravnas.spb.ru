@@ -282,6 +282,25 @@ if (currentYear) {
 }
 
 // Swipers
+let heroSwiper = new Swiper(".hero .hero__swiper .swiper", {
+  slidesPerView: 1,
+  spaceBetween: 0,
+  autoHeight: true,
+  effect: "fade",
+  navigation: {
+    nextEl: ".hero .hero__swiper .swiper-button-next",
+    prevEl: ".hero .hero__swiper .swiper-button-prev",
+  },
+  pagination: {
+    el: ".hero .hero__swiper .swiper-pagination",
+    clickable: true,
+  },
+  autoplay: {
+    delay: 5000,
+    disableOnInteraction: false,
+  },
+});
+
 let directionsSwiper = new Swiper(".directions .directions__list", {
   slidesPerView: "auto",
   spaceBetween: 12,

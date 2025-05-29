@@ -8,6 +8,7 @@ interface Props {
   img?: string;
   imgClass?: string;
   isMain?: boolean;
+  slides?: boolean;
 }
 
 const {
@@ -73,6 +74,28 @@ const {
               </a>
             </div>
           )}
+
+          <div class="hero__swiper">
+            <div class="swiper">
+              <div class="swiper-wrapper">
+                {Array.from({ length: 5 }).map((_, index) => (
+                  <div class="swiper-slide group">
+                    <div class="group-title">Стационар на дому {index}</div>
+                    <div class="group-row">
+                      <div class="group-price">13 000 Р</div>
+                      <div class="group-realprice">30 000 Р</div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div class="swiper-button-prev" />
+            <div class="swiper-button-next" />
+
+            <div class="swiper-pagination" />
+          </div>
+
           <Button variant="primary" data-form="callback">
             Оставить заявку
           </Button>
@@ -161,6 +184,7 @@ const {
 
         .hero__categories {
           margin: rem(60) 0 rem(70);
+          max-width: rem(620);
 
           @include media("3xl") {
             margin: rem(40) 0 rem(50);
@@ -177,6 +201,7 @@ const {
 
     &__categories {
       width: 100%;
+      max-width: rem(500);
       flex-wrap: wrap;
       gap: rem(24) rem(18);
 
@@ -363,6 +388,107 @@ const {
         @include media("xs") {
           --height: #{rem(260)};
           transform: translate(35%, -15%);
+        }
+      }
+    }
+
+    &__swiper {
+      position: relative;
+      margin-bottom: rem(20);
+      padding: rem(30) rem(30) rem(40);
+      width: 100%;
+      max-width: rem(595);
+      background: #fff;
+      box-shadow: 0 0 126px 0 rgba(0, 0, 0, 0.15);
+      border-radius: rem(20);
+
+      --swiper-pagination-bullet-width: #{rem(10)};
+      --swiper-pagination-bullet-height: #{rem(10)};
+      --swiper-navigation-sides-offset: #{rem(-20)};
+
+      @include media("lg") {
+        margin-bottom: rem(0);
+        max-width: rem(480);
+      }
+      @include media("xs") {
+        padding: rem(20) rem(20) rem(30);
+        --swiper-pagination-bullet-width: #{rem(8)};
+        --swiper-pagination-bullet-height: #{rem(8)};
+        --swiper-navigation-sides-offset: #{rem(-14)};
+      }
+
+      .swiper {
+        width: 100%;
+
+        &-slide {
+          opacity: 0 !important;
+          transition: var(--transition-ease);
+
+          &.swiper-slide-active {
+            opacity: 1 !important;
+          }
+        }
+
+        &-pagination {
+          z-index: 2;
+        }
+
+        &-button-prev,
+        &-button-next {
+          z-index: 2;
+          margin: 0 !important;
+          transform: translateY(-50%);
+          width: rem(40);
+          height: rem(40);
+          color: #fff;
+          background: var(--primary);
+          border-radius: 50%;
+          box-shadow: 0 0 rem(20) 0 rgba(0, 0, 0, 0.15);
+          transition: var(--transition-ease);
+
+          @include media("xs") {
+            width: rem(30);
+            height: rem(30);
+          }
+
+          &::after {
+            font-size: rem(20);
+
+            @include media("xs") {
+              font-size: rem(16);
+            }
+          }
+
+          &.swiper-button-disabled {
+            display: none;
+          }
+        }
+      }
+
+      .group {
+        gap: rem(8);
+
+        &-row {
+          gap: rem(20);
+        }
+
+        &-title {
+          font-size: clamp(1.25rem, 1.1058rem + 0.641vw, 1.875rem);
+          font-weight: 700;
+          text-transform: uppercase;
+        }
+
+        &-price {
+          font-size: clamp(1.5rem, 1.3269rem + 0.7692vw, 2.25rem);
+          font-weight: 700;
+          color: var(--primary);
+        }
+
+        &-realprice {
+          font-size: clamp(1.125rem, 1.0962rem + 0.1282vw, 1.25rem);
+          font-weight: 400;
+          text-decoration: line-through;
+          color: #606060;
         }
       }
     }

@@ -1,6 +1,7 @@
 export { default as About } from "./About.astro";
 export { default as Application } from "./Application.astro";
 export { default as Callback } from "./Callback.astro";
+export { default as Categories } from "./Categories.astro";
 export { default as Directions } from "./Directions.astro";
 export { default as Faq } from "./Faq.astro";
 export { default as Gallery } from "./Gallery.astro";
@@ -10,6 +11,7 @@ export { default as License } from "./License.astro";
 export { default as Path } from "./Path.astro";
 export { default as Pricing } from "./Pricing.astro";
 export { default as Reviews } from "./Reviews.astro";
+export { default as Seo } from "./Seo.astro";
 export { default as Specialists } from "./Specialists.astro";
 export { default as Stages } from "./Stages.astro";
 export { default as Trust } from "./Trust.astro";

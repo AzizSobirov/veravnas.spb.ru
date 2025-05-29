@@ -8,6 +8,8 @@ export { default as Gallery } from "./Gallery.astro";
 export { default as Help } from "./Help.astro";
 export { default as Hero } from "./Hero.astro";
 export { default as License } from "./License.astro";
+export { default as Motivation } from "./Motivation.astro";
+export { default as NeedHelp } from "./NeedHelp.astro";
 export { default as Path } from "./Path.astro";
 export { default as Pricing } from "./Pricing.astro";
 export { default as Reviews } from "./Reviews.astro";

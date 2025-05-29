@@ -1,0 +1,234 @@
+---
+import { Section, H2, H3, P, Image, Icon, Button } from "ui";
+---
+
+<!-- Motivation -->
+<Section name="motivation">
+  <H2>Мотивация на <strong>Лечение</strong></H2>
+
+  <div class="motivation__list">
+    <div class="motivation__item">
+      <div class="motivation__item-img">
+        <Image src="motivation/1.png" alt="Мотивация 1" />
+      </div>
+      <div class="motivation__item-content">
+        <div class="motivation__item-title">
+          Беседа со специалистом <strong> в клинике</strong>
+        </div>
+        <p class="motivation__item-desc">
+          Наш специалист проведет диагностику состояния, найдет причины
+          игромании и выстроит диалог, учитывая индивидуальные особенности
+          пациента.
+        </p>
+      </div>
+    </div>
+
+    <div class="motivation__item">
+      <div class="motivation__item-img">
+        <Image src="motivation/2.png" alt="Мотивация 2" />
+      </div>
+      <div class="motivation__item-content">
+        <div class="motivation__item-title">
+          Мотивационный разговор <strong>у вас дома</strong>
+        </div>
+        <p class="motivation__item-desc">
+          Специалисты приедут домой и проведут беседу с пациентом в привычной
+          для него обстановке. В большинстве случаев пациенты соглашаются на
+          лечение после разговора.
+        </p>
+      </div>
+    </div>
+
+    <div class="motivation__item">
+      <div class="motivation__item-img">
+        <Image src="motivation/3.png" alt="Мотивация 3" />
+      </div>
+      <div class="motivation__item-content">
+        <div class="motivation__item-title">
+          Экскурсия <strong>в стационар</strong>
+        </div>
+        <p class="motivation__item-desc">
+          Специалисты клиники проведут экскурсию в стационар, познакомят с
+          программой и методиками лечения, условиями проживания и сотрудниками
+          клиники.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="motivation__footer">
+    <div class="motivation__footer-text group-row">
+      <Icon src="info.svg" />
+      <div class="group">
+        <div class="motivation__footer-title">
+          Не знаете, как убедить зависимого человека начать лечение? <strong
+            >Мы знаем, как помочь!</strong
+          >
+        </div>
+        <p class="motivation__footer-desc">
+          В нашей команде работают опытные специалисты, которые гарантированно
+          убедят зависимого человека начать лечение.
+        </p>
+      </div>
+    </div>
+
+    <div class="application__content-contact group-row">
+      <a
+        class="application__content-phone"
+        href="tel:+78129241222"
+        target="_blank"
+        title="Телефон"
+      >
+        +7 (812) 924-12-22
+      </a>
+
+      <div class="group-row">
+        <a href="#" target="_blank" title="WhatsApp">
+          <Icon src="whatsapp-2.svg" />
+        </a>
+        <a href="#" target="_blank" title="Telegram">
+          <Icon src="telegram-2.svg" />
+        </a>
+      </div>
+    </div>
+  </div>
+</Section>
+
+<style lang="scss" is:global>
+  @use "scss/helpers" as *;
+
+  .motivation {
+    position: relative;
+
+    &__list {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      flex-wrap: wrap;
+      gap: rem(40) rem(20);
+
+      @include media("lg") {
+        flex-direction: column;
+        gap: rem(30);
+      }
+    }
+
+    &__item {
+      flex: 1 0 rem(480);
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: rem(20);
+
+      @include media("lg") {
+        flex-basis: 100%;
+      }
+      @include media("xs") {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      &-img {
+        width: rem(215);
+        height: rem(215);
+        border-radius: 50%;
+
+        @include media("lg") {
+          width: rem(150);
+          height: rem(150);
+        }
+        @include media("xs") {
+          width: rem(180);
+          height: rem(180);
+        }
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          border-radius: inherit;
+        }
+      }
+
+      &-content {
+        flex: 1;
+        font-family: var(--font-secondary);
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: rem(14);
+
+        @include media("xs") {
+          align-items: center;
+          text-align: center;
+        }
+      }
+
+      &-title {
+        font-size: rem(20);
+        text-transform: uppercase;
+
+        strong {
+          color: var(--primary);
+          font-weight: 700;
+        }
+      }
+
+      &-desc {
+        @include media("sm") {
+          font-size: rem(14);
+        }
+      }
+    }
+
+    &__footer {
+      padding: rem(15);
+      width: 100%;
+      color: #fff;
+      background: var(--primary);
+      border-radius: rem(35);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: rem(20);
+
+      @include media("lg") {
+        border-radius: rem(20);
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      &-text {
+        font-family: var(--font-secondary);
+        align-items: flex-start;
+        gap: rem(15);
+        --icon-size: #{rem(45)};
+
+        @include media("lg") {
+          --icon-size: #{rem(35)};
+        }
+        @include media("sm") {
+          flex-direction: column;
+          gap: rem(10);
+        }
+
+        .group {
+          gap: rem(10);
+        }
+      }
+
+      &-title {
+        font-size: clamp(1.125rem, 1.0962rem + 0.1282vw, 1.25rem);
+      }
+
+      & > .group-row:last-child {
+        @include media("lg") {
+          margin-top: rem(5);
+          width: 100%;
+          justify-content: space-between;
+        }
+      }
+    }
+  }
+</style>

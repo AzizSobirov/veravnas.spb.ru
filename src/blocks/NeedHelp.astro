@@ -1,0 +1,101 @@
+---
+import { Section, H2, H3, P, Image, Icon, Button } from "ui";
+---
+
+<!-- NeedHelp -->
+<Section name="need-help">
+  <H2>как понять что <strong>нужна помощь?</strong></H2>
+
+  <div class="need-help__content group">
+    <div class="need-help__text group">
+      <p>
+        Контроль над расходами на развлечения и соблюдение установленных лимитов
+        в азартных играх не свидетельствуют о наличии зависимости. <br /><strong
+          >Лудомания же — это серьезное расстройство</strong
+        >, которое сопровождается следующими тревожными признаками:
+      </p>
+
+      <ul>
+        <li>Постоянные размышления о выигрыше.</li>
+        <li>Неудержимое стремление вернуть проигранные средства.</li>
+        <li>
+          Поиск денег любой ценой, включая склонность к незаконным действиям.
+        </li>
+        <li>
+          Угнетённое состояние, агрессия и раздражение, направленные на близких.
+        </li>
+      </ul>
+
+      <p>
+        Игнорировать такие симптомы нельзя — при первых проявлениях важно
+        обратиться за помощью к специалистам.
+        <br />
+        <strong
+          >Начатое вовремя комплексное лечение значительно повышает вероятность
+          полного выздоровления и предотвращения рецидивов.</strong
+        >
+      </p>
+    </div>
+
+    <Button data-modal="form">Оставить заявку</Button>
+  </div>
+
+  <div class="need-help__img">
+    <Image src="need-help.png" alt="Нужна помощь?" />
+  </div>
+</Section>
+
+<style lang="scss" is:global>
+  @use "scss/helpers" as *;
+
+  .need-help {
+    position: relative;
+
+    &__content {
+      width: 100%;
+      max-width: rem(1250);
+      gap: rem(30);
+
+      @include media("3xl") {
+        max-width: rem(1000);
+      }
+      @include media("xl") {
+        max-width: rem(800);
+      }
+    }
+
+    &__text {
+      width: 100%;
+      gap: rem(20);
+
+      @include media("sm") {
+        font-size: rem(14);
+        gap: rem(15);
+      }
+
+      strong {
+        color: var(--primary);
+      }
+
+      ul {
+        padding-left: rem(24);
+        list-style-type: disc;
+      }
+    }
+
+    &__img {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(55%, -50%);
+      z-index: -1;
+
+      @include media("3xl") {
+        transform: translate(50%, -50%);
+      }
+      @include media("lg") {
+        display: none;
+      }
+    }
+  }
+</style>

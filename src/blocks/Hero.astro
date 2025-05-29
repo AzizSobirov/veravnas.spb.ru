@@ -390,6 +390,36 @@ const {
           transform: translate(35%, -15%);
         }
       }
+
+      .img-3 {
+        transform: translate(-10%, -52%);
+        --height: #{rem(1250)};
+
+        @include media("3xl") {
+          --height: #{rem(1040)};
+        }
+        @include media("2xl") {
+          --height: #{rem(760)};
+          transform: translate(0%, -75%);
+        }
+        @include media("xl") {
+          --height: #{rem(720)};
+        }
+        @include media("lg") {
+          --height: #{rem(480)};
+          transform: translate(15%, 0%);
+        }
+        @include media("sm") {
+          --height: #{rem(340)};
+          transform: translate(60%, -20%);
+        }
+        @include media("xs") {
+          transform: translate(30%, -20%);
+        }
+        @include media(rem(400)) {
+          transform: translate(20%, -20%);
+        }
+      }
     }
 
     &__swiper {

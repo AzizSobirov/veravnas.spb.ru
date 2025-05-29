@@ -278,23 +278,25 @@ getAccordionParents.forEach((parent) => {
 // Seo
 const seo = document.querySelector(".seo");
 if (seo) {
-  const content = seo.querySelector(".seo__content");
-  const contentFirstP = content.querySelector("p");
-  const btn = seo.querySelector(".btn");
+  window.addEventListener("load", () => {
+    const content = seo.querySelector(".seo__content");
+    const contentFirstP = content.querySelector("p");
+    const btn = seo.querySelector(".btn");
 
-  let contentHeight = contentFirstP.offsetHeight;
-  content.style.maxHeight = contentHeight + "px";
+    let contentHeight = contentFirstP.offsetHeight;
+    content.style.maxHeight = contentHeight + "px";
 
-  btn.addEventListener("click", () => {
-    if (btn.classList.contains("active")) {
-      btn.classList.remove("active");
-      btn.textContent = "Подробнее";
-      content.style.maxHeight = contentHeight + "px";
-    } else {
-      btn.classList.add("active");
-      btn.textContent = "Скрыть";
-      content.style.maxHeight = content.scrollHeight + "px";
-    }
+    btn.addEventListener("click", () => {
+      if (btn.classList.contains("active")) {
+        btn.classList.remove("active");
+        btn.textContent = "Подробнее";
+        content.style.maxHeight = contentHeight + "px";
+      } else {
+        btn.classList.add("active");
+        btn.textContent = "Скрыть";
+        content.style.maxHeight = content.scrollHeight + "px";
+      }
+    });
   });
 }
 

@@ -1,0 +1,114 @@
+---
+import { Section, H2, H3, P, Image, BgImg, Icon, Button } from "ui";
+---
+
+<!-- Mental -->
+<Section name="mental">
+  <H2
+    >Забота о психическом здоровье — <strong>ключ к полноценной жизни</strong
+    ></H2
+  >
+
+  <div class="mental__content">
+    <div class="mental__left group-row">
+      <BgImg src="mental-card-bg.png" />
+      <p>
+        Современный ритм жизни ежедневно подвергает нашу психику серьёзным
+        испытаниям: стресс, нестабильность, переутомление и давление общества.
+        Даже у самых устойчивых людей могут возникнуть проблемы, которые не
+        проходят «сами по себе». Игнорирование первых симптомов может привести к
+        серьёзным последствиям.
+      </p>
+    </div>
+
+    <div class="mental__right group">
+      <p>
+        <strong> Когда нужна помощь? </strong><br />
+        Если вы или ваши близкие ощущаете:
+      </p>
+      <ul class="group-row">
+        <li>Подавленность или тревожность,</li>
+        <li>Расстройства сна или настроения</li>
+        <li>Навязчивые мысли или страхи</li>
+        <li>Снижение интереса к жизни и общению</li>
+      </ul>
+      <strong>не откладывайте — обратитесь к специалисту.</strong>
+    </div>
+  </div>
+</Section>
+
+<style lang="scss" is:global>
+  @use "scss/helpers" as *;
+
+  .mental {
+    position: relative;
+
+    .text-h2 {
+      letter-spacing: 0.02em;
+    }
+
+    &__content {
+      width: 100%;
+      color: #fff;
+      font-family: var(--font-secondary);
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: rem(20);
+
+      @include media("xl") {
+        grid-template-columns: 1fr;
+        gap: rem(15);
+      }
+    }
+
+    &__left {
+      position: relative;
+      padding: rem(45);
+      border-radius: rem(15);
+      overflow: hidden;
+
+      @include media("3xl") {
+        padding: rem(25) rem(35);
+      }
+      @include media("sm") {
+        padding: rem(20);
+        font-size: rem(14);
+      }
+    }
+
+    &__right {
+      padding: rem(30) rem(45);
+      background-color: var(--secondary);
+      border-radius: rem(15);
+      gap: rem(18);
+
+      @include media("3xl") {
+        padding: rem(25) rem(35);
+      }
+      @include media("sm") {
+        padding: rem(20);
+        font-size: rem(14);
+      }
+
+      ul {
+        flex-wrap: wrap;
+        gap: rem(15) rem(20);
+
+        @include media("3xl") {
+          gap: rem(10) rem(15);
+        }
+      }
+
+      li {
+        padding: rem(10) rem(25);
+        border: rem(1) solid #fff;
+        border-radius: rem(10);
+
+        @include media("3xl") {
+          padding: rem(6) rem(15);
+          font-size: rem(14);
+        }
+      }
+    }
+  }
+</style>

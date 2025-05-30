@@ -1,0 +1,180 @@
+---
+import { Section, H2, H3, P, Image, Icon, Button } from "ui";
+---
+
+<!-- Rehabilitation -->
+<Section name="rehabilitation">
+  <H2>Что такое <strong>реабилитация</strong></H2>
+
+  <div class="rehabilitation__content group">
+    <p class="rehabilitation-desc">
+      <strong>Реабилитация</strong> — это комплекс мер медицинского, психологического
+      и социального характера, которые помогут больному преодолеть зависимость, способствуют
+      восстановлению физического и психического здоровья, а также возвращению к нормальной,
+      трезвой жизни.
+    </p>
+    <p class="rehabilitation-desc">
+      Программ реабилитации много, нарколог совместно с психологом подбирает для
+      пациента оптимальный курс, который поможет быстро достичь прогресса в
+      лечении. Условно реабилитацию можно разделить на следующие этапы, которые
+      пациент проходит последовательно:
+    </p>
+
+    <div class="rehabilitation__wrapper">
+      <ul class="rehabilitation__list group">
+        <li class="rehabilitation__list-item">
+          <p>
+            <strong>Оценка состояния.</strong>
+            Проводится первичная оценка физического и психического состояния пациента
+            для разработки индивидуального плана лечения.
+          </p>
+        </li>
+        <li class="rehabilitation__list-item">
+          <p>
+            <strong>Детоксикация.</strong>
+            На начальном этапе происходит очищение организма от алкоголя под медицинским
+            наблюдением.
+          </p>
+        </li>
+        <li class="rehabilitation__list-item">
+          <p>
+            <strong>Работа с психикой пациента.</strong>
+            Индивидуальные и групповые сеансы терапии помогают пациентам разобраться
+            в причинах зависимости и разработать стратегии ее преодоления.
+          </p>
+        </li>
+        <li class="rehabilitation__list-item">
+          <p>
+            <strong>Образовательные программы.</strong>
+            Пациенты знакомятся с механизмами зависимости, методами ее преодоления
+            и навыками поведения в стрессовых ситуациях.
+          </p>
+        </li>
+        <li class="rehabilitation__list-item">
+          <p>
+            <strong>Развитие навыков.</strong>
+            Обучение новым жизненным навыкам и стратегиям, при помощи которых человек
+            научится справляться с трудными ситуациями без алкоголя.
+          </p>
+        </li>
+        <li class="rehabilitation__list-item">
+          <p>
+            <strong>Реинтеграция в общество.</strong>
+            Постепенная адаптация к жизни вне центра через программы реинтеграции,
+            трудотерапию и социальные активности.
+          </p>
+        </li>
+        <li class="rehabilitation__list-item">
+          <p>
+            <strong>Поддержка после выхода.</strong>
+            После завершения программы пациент не остается один на один с проблемами,
+            он может рассчитывать на регулярные консультации и продолжение терапии.
+          </p>
+        </li>
+      </ul>
+      <div class="rehabilitation__img">
+        <Image src="rehabilitation.png" />
+      </div>
+    </div>
+
+    <p class="rehabilitation-desc">
+      Все этапы реабилитации направлены на создание устойчивой мотивации к
+      трезвому образу жизни и предотвращение рецидивов. Наша клиника использует
+      проверенные временем методики, они дают отличный результат и способствуют
+      возвращению человека к нормальной, трезвой жизни.
+    </p>
+  </div>
+</Section>
+
+<style lang="scss" is:global>
+  @use "scss/helpers" as *;
+
+  .rehabilitation {
+    position: relative;
+
+    &__content {
+      width: 100%;
+      font-family: var(--font-secondary);
+      gap: rem(20);
+
+      @include media("sm") {
+        gap: rem(15);
+      }
+    }
+
+    &-desc {
+      width: 100%;
+      max-width: rem(1680);
+      font-size: rem(18);
+
+      @include media("lg") {
+        font-size: 1rem;
+      }
+      @include media("sm") {
+        font-size: rem(14);
+      }
+    }
+
+    strong {
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    &__wrapper {
+      display: flex;
+      align-items: stretch;
+      justify-content: flex-start;
+      gap: rem(20);
+    }
+
+    &__list {
+      padding: rem(35) rem(44);
+      background: #fff;
+      box-shadow: 0 0 rem(55) 0 rgba(0, 0, 0, 0.15);
+      border-radius: rem(20);
+      gap: rem(15);
+
+      @include media("sm") {
+        padding: rem(20);
+      }
+
+      &-item {
+        position: relative;
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+        gap: rem(15);
+
+        @include media("sm") {
+          font-size: rem(14);
+          gap: rem(12);
+        }
+
+        &::before {
+          content: "";
+          display: block;
+          background: url('data:image/svg+xml,<svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M9.5 18.875C10.7311 18.875 11.9502 18.6325 13.0877 18.1614C14.2251 17.6902 15.2586 16.9997 16.1291 16.1291C16.9997 15.2586 17.6902 14.2251 18.1614 13.0877C18.6325 11.9502 18.875 10.7311 18.875 9.5C18.875 8.26886 18.6325 7.04977 18.1614 5.91234C17.6902 4.77492 16.9997 3.74142 16.1291 2.87087C15.2586 2.00032 14.2251 1.30977 13.0877 0.838629C11.9502 0.367491 10.7311 0.125 9.5 0.125C7.0136 0.125 4.62903 1.11272 2.87087 2.87087C1.11272 4.62903 0.125 7.0136 0.125 9.5C0.125 11.9864 1.11272 14.371 2.87087 16.1291C4.62903 17.8873 7.0136 18.875 9.5 18.875ZM9.25833 13.2917L14.4667 7.04167L12.8667 5.70833L8.3875 11.0823L6.06979 8.76354L4.59688 10.2365L7.72187 13.3615L8.52812 14.1677L9.25833 13.2917Z" fill="%230BBF8C" /></svg>')
+            center/contain no-repeat;
+          min-width: rem(19);
+          width: rem(19);
+          height: rem(19);
+        }
+      }
+    }
+
+    &__img {
+      min-width: 35%;
+      flex-grow: 1;
+
+      @include media("xl") {
+        display: none;
+      }
+
+      img {
+        height: 100%;
+        border-radius: rem(20);
+        object-fit: cover;
+      }
+    }
+  }
+</style>

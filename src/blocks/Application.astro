@@ -1,54 +1,147 @@
 ---
 import { Section, H2, H3, P, Image, Icon, Button } from "ui";
+
+interface Props {
+  variant?: "default" | "secondary";
+}
+
+const { variant = "default" }: Props = Astro.props;
 ---
 
 <!-- Application -->
-<Section name="application">
-  <div class="application__content group">
-    <H2>ВЫЗВАТЬ <strong>ВРАЧА НА ДОМ</strong></H2>
-    <div class="application__content-contact group-row">
-      <a
-        class="application__content-phone"
-        href="tel:+78129241222"
-        target="_blank"
-        title="Телефон"
-      >
-        +7 (812) 924-12-22
-      </a>
+<Section
+  name={variant === "default" ? "application" : "application variant-secondary"}
+>
+  {
+    variant === "default" ? (
+      <>
+        <div class="application__content group">
+          <H2>
+            ВЫЗВАТЬ <strong>ВРАЧА НА ДОМ</strong>
+          </H2>
+          <div class="application__content-contact group-row">
+            <a
+              class="application__content-phone"
+              href="tel:+78129241222"
+              target="_blank"
+              title="Телефон"
+            >
+              +7 (812) 924-12-22
+            </a>
 
-      <div class="group-row">
-        <a href="#" target="_blank" title="WhatsApp">
-          <Icon src="whatsapp-2.svg" />
-        </a>
-        <a href="#" target="_blank" title="Telegram">
-          <Icon src="telegram-2.svg" />
-        </a>
-      </div>
-    </div>
+            <div class="group-row">
+              <a href="#" target="_blank" title="WhatsApp">
+                <Icon src="whatsapp-2.svg" />
+              </a>
+              <a href="#" target="_blank" title="Telegram">
+                <Icon src="telegram-2.svg" />
+              </a>
+            </div>
+          </div>
 
-    <div class="application__content-subtitle">
-      Или заполните заявку <br /> и мы <strong>оперативно перезвоним вам</strong
-      >
-    </div>
+          <div class="application__content-subtitle">
+            Или заполните заявку <br /> и мы
+            <strong>оперативно перезвоним вам</strong>
+          </div>
 
-    <form class="application__form the-form">
-      <div class="group-row">
-        <input type="text" name="phone" placeholder="Ваш телефон" required />
-        <button type="submit">Вызвать врача</button>
-      </div>
+          <form class="application__form the-form">
+            <div class="group-row">
+              <input
+                type="text"
+                name="phone"
+                placeholder="Ваш телефон"
+                required
+              />
+              <button type="submit">Вызвать врача</button>
+            </div>
 
-      <div class="text-xs">
-        Нажимая кнопку, вы соглашаетесь с <a
-          href="#"
-          target="_blank"
-          title="Политика конфиденциальности">политикой конфиденциальности</a
-        >
-      </div>
-    </form>
-  </div>
-  <div class="application__img">
-    <Image src="application-img.png" />
-  </div>
+            <div class="text-xs">
+              Нажимая кнопку, вы соглашаетесь с 
+              <a href="#" target="_blank" title="Политика конфиденциальности">
+                политикой конфиденциальности
+              </a>
+            </div>
+          </form>
+        </div>
+        <div class="application__img">
+          <Image src="application-img.png" />
+        </div>
+      </>
+    ) : (
+      <>
+        <div class="application__content group-row">
+          <div class="group">
+            <H2>
+              Готовы <strong>ПОМОЧЬ</strong>
+            </H2>
+
+            <div class="application__content-subtitle">
+              Мы обеспечим
+              <strong>
+                быстрый старт лечения, максимальную эффективность терапии
+              </strong>
+              и <strong>поддержку</strong> на каждом этапе
+              <strong>выздоровления.</strong>
+              <>
+                <br />
+                <br />
+              </>
+              <strong>Обратитесь в центр «Вера в НАС» </strong> — и верните
+              контроль над своей жизнью уже сегодня.
+            </div>
+
+            <div class="application__content-contact group-row">
+              <a
+                class="application__content-phone"
+                href="tel:+78129241222"
+                target="_blank"
+                title="Телефон"
+              >
+                +7 (812) 924-12-22
+              </a>
+
+              <div class="group-row">
+                <a href="#" target="_blank" title="WhatsApp">
+                  <Icon src="whatsapp-2.svg" />
+                </a>
+                <a href="#" target="_blank" title="Telegram">
+                  <Icon src="telegram-2.svg" />
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <form class="application__form the-form">
+            <div class="application__content-subtitle">
+              Или заполните заявку <br /> и мы
+              <strong>оперативно перезвоним вам</strong>
+            </div>
+
+            <div class="group">
+              <input
+                type="text"
+                name="phone"
+                placeholder="Ваш телефон"
+                required
+              />
+              <button type="submit">Оставить заявку</button>
+            </div>
+
+            <div class="text-xs">
+              Нажимая кнопку, вы соглашаетесь с 
+              <a href="#" target="_blank" title="Политика конфиденциальности">
+                политикой конфиденциальности
+              </a>
+            </div>
+          </form>
+        </div>
+
+        <div class="application__img">
+          <Image src="application-img-2.png" />
+        </div>
+      </>
+    )
+  }
 </Section>
 
 <style lang="scss" is:global>
@@ -197,6 +290,108 @@ import { Section, H2, H3, P, Image, Icon, Button } from "ui";
         height: 100%;
         min-width: fit-content;
         object-fit: contain;
+      }
+    }
+
+    &.variant-secondary {
+      .application__content {
+        gap: 5%;
+
+        @include media("xl") {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: rem(30);
+        }
+
+        &-subtitle {
+          font-size: clamp(1rem, 0.9423rem + 0.2564vw, 1.25rem);
+        }
+
+        & > .group {
+          width: 100%;
+          max-width: 40%;
+          gap: rem(15);
+
+          @include media("xl") {
+            max-width: 100%;
+          }
+
+          & > .group-row {
+            margin-top: rem(20);
+          }
+        }
+      }
+
+      .application__form {
+        padding-left: 5%;
+        padding-top: rem(30);
+        padding-bottom: rem(30);
+        max-width: 30%;
+        border-left: rem(1) solid #fff;
+        gap: rem(12);
+
+        @include media("xl") {
+          padding: rem(20) rem(20) rem(20) rem(30);
+          max-width: 100%;
+        }
+        @include media("sm") {
+          padding: 0;
+          border: none;
+          gap: rem(10);
+        }
+
+        .group {
+          margin-top: rem(18);
+          width: 100%;
+          max-width: rem(465);
+          gap: rem(20);
+
+          @include media("sm") {
+            margin-top: rem(10);
+            gap: rem(15);
+          }
+        }
+
+        button {
+          width: rem(265);
+
+          @include media("xs") {
+            width: 100%;
+          }
+        }
+
+        .text-xs {
+          font-size: rem(12);
+        }
+      }
+
+      .application__img {
+        all: unset;
+        position: absolute;
+        bottom: rem(50);
+        left: 50%;
+        transform: translate(calc(-50% + rem(700)), rem(4));
+        width: rem(608);
+        height: auto;
+
+        @include media("3xl") {
+          transform: translate(74%, rem(4));
+          width: 30%;
+        }
+        @include media("xl") {
+          width: 40%;
+          transform: translate(20%, rem(4));
+        }
+        @include media("lg") {
+          display: none;
+        }
+
+        img {
+          all: unset;
+          width: 100%;
+          height: auto;
+          object-fit: contain;
+        }
       }
     }
   }

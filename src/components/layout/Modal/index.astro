@@ -1,20 +1,112 @@
 ---
-import { H4 } from "ui";
-import TheForm from "../../TheForm.astro";
+import { H4, Icon } from "ui";
 ---
 
 <div class="modal-overlay">
   <div class="modal" data-template="callback">
     <div class="modal-form">
       <div class="btn-close" data-modal="close"></div>
-      <TheForm />
+
+      <div class="modal__title">
+        <strong>Заказать звонок</strong>
+      </div>
+
+      <p class="modal__desc">
+        Заполните форму и мы Вам перезвоним в течении 15 минут
+      </p>
+
+      <form class="the-form">
+        <input type="text" name="phone" placeholder="Ваш телефон" required />
+        <button type="submit">Получить помощь</button>
+        <div class="text-xs">
+          Нажимая кнопку, вы соглашаетесь с
+          <a href="#" target="_blank" title="Политика конфиденциальности">
+            политикой конфиденциальности
+          </a>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="modal" data-template="form">
+    <div class="modal-form">
+      <div class="btn-close" data-modal="close"></div>
+
+      <div class="modal__title">
+        ТРЕБУЕТСЯ <strong> ПОМОЩЬ?</strong>
+      </div>
+
+      <div class="application__content-contact group-row">
+        <a
+          class="application__content-phone"
+          href="tel:+78129241222"
+          target="_blank"
+          title="Телефон"
+        >
+          +7 (812) 924-12-22
+        </a>
+
+        <div class="group-row">
+          <a href="#" target="_blank" title="WhatsApp">
+            <Icon src="whatsapp-2.svg" />
+          </a>
+          <a href="#" target="_blank" title="Telegram">
+            <Icon src="telegram-2.svg" />
+          </a>
+        </div>
+      </div>
+
+      <div class="modal__subtitle">
+        Или заполните заявку <br />
+        и мы <strong>оперативно перезвоним вам</strong>
+      </div>
+
+      <form class="the-form">
+        <input type="text" name="phone" placeholder="Ваш телефон" required />
+        <button type="submit">Получить помощь</button>
+        <div class="text-xs">
+          Нажимая кнопку, вы соглашаетесь с
+          <a href="#" target="_blank" title="Политика конфиденциальности">
+            политикой конфиденциальности
+          </a>
+        </div>
+      </form>
     </div>
   </div>
 
   <div class="modal" data-template="success">
     <div class="modal-form">
       <div class="btn-close" data-modal="close"></div>
-      <TheForm success={true} />
+
+      <div class="modal__title">
+        <strong>
+          Спасибо за <br /> обращение
+        </strong>
+      </div>
+
+      <div class="modal__img">
+        <svg
+          width="129"
+          height="129"
+          viewBox="0 0 129 129"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M48.375 48.375L72.5625 64.5L96.75 48.375M16.125 72.5625H26.875M5.375 56.4375H26.875"
+            stroke="#0BBF8C"
+            stroke-width="4"
+            stroke-linecap="round"
+            stroke-linejoin="round"></path>
+          <path
+            d="M26.875 40.3125V37.625C26.875 34.7739 28.0076 32.0396 30.0236 30.0236C32.0396 28.0076 34.7739 26.875 37.625 26.875H107.5C110.351 26.875 113.085 28.0076 115.101 30.0236C117.117 32.0396 118.25 34.7739 118.25 37.625V91.375C118.25 94.2261 117.117 96.9604 115.101 98.9764C113.085 100.992 110.351 102.125 107.5 102.125H37.625C34.7739 102.125 32.0396 100.992 30.0236 98.9764C28.0076 96.9604 26.875 94.2261 26.875 91.375V88.6875"
+            stroke="#0BBF8C"
+            stroke-width="4"
+            stroke-linecap="round"></path>
+        </svg>
+      </div>
+
+      <p class="modal__desc">Мы скоро свяжемся с Вами!</p>
     </div>
   </div>
 </div>
@@ -30,7 +122,7 @@ import TheForm from "../../TheForm.astro";
     z-index: 99;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.6);
+    background: rgba(0, 0, 0, 0.4);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -60,69 +152,138 @@ import TheForm from "../../TheForm.astro";
       transform: scale(1);
       opacity: 1;
     }
+
+    &__title {
+      font-size: clamp(1.5rem, 1.3269rem + 0.7692vw, 2.25rem);
+      text-align: center;
+      text-transform: uppercase;
+
+      strong {
+        color: var(--primary);
+      }
+    }
+
+    &__subtitle {
+      font-size: clamp(1rem, 0.9423rem + 0.2564vw, 1.25rem);
+      text-align: center;
+    }
+
+    &__desc {
+      color: #000;
+      font-size: rem(14);
+      font-family: var(--font-secondary);
+      text-align: center;
+    }
+
+    &__img {
+      width: rem(120);
+    }
+
+    .application__content-contact {
+      margin-bottom: rem(10);
+      box-shadow: 0 0 rem(55) 0 rgba(0, 0, 0, 0.15);
+      background: #fff;
+
+      @include media("lg", min-width) {
+        padding: rem(20) rem(25) !important;
+      }
+      @include media("xs") {
+        margin-bottom: rem(5);
+      }
+    }
+
+    .the-form {
+      margin-top: rem(15);
+      width: 100%;
+      max-width: rem(360);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: rem(20);
+
+      @include media("xs") {
+        margin-top: rem(10);
+        gap: rem(15);
+      }
+
+      input {
+        padding: rem(15);
+        width: 100%;
+        border: rem(1) solid var(--primary);
+        border-radius: rem(5);
+        flex-grow: 1;
+
+        &::placeholder {
+          color: var(--primary);
+          opacity: 0.6;
+        }
+      }
+
+      button {
+        padding: rem(15) rem(40);
+        width: 100%;
+        color: #fff;
+        background: var(--secondary);
+        border-radius: rem(5);
+        transition: var(--transition-ease);
+        white-space: nowrap;
+
+        &:hover {
+          background: var(--secondary-darker);
+        }
+      }
+
+      .text-xs {
+        width: 100%;
+        color: var(--primary);
+        font-size: rem(14);
+        text-align: center;
+
+        @include media("xs") {
+          font-size: rem(12);
+        }
+
+        a {
+          text-decoration: underline dotted;
+        }
+      }
+    }
   }
 
   .modal-form {
     position: relative;
-    padding: rem(50);
-    min-height: rem(430);
-    width: rem(810);
-    color: #fff;
-    background: var(--primary);
-    border-radius: rem(40);
+    padding: rem(45);
+    min-height: rem(340);
+    min-width: rem(520);
+    background: #fff;
+    box-shadow: 0 0 rem(55) 0 rgba(0, 0, 0, 0.15);
+    border-radius: rem(10);
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-    gap: rem(30);
+    align-items: center;
+    gap: rem(12);
 
     @include media("xl") {
-      max-width: calc(100vw - 40px);
+      max-width: calc(100vw - rem(40));
     }
     @include media("sm") {
       padding: rem(30) rem(20);
       min-height: rem(250);
-      max-width: calc(100vw - 40px);
-      border-radius: rem(20);
-      gap: rem(20);
+      max-width: calc(100vw - rem(40));
+      min-width: rem(400);
     }
     @include media("xs") {
-      max-width: calc(100vw - 25px);
-    }
-
-    &::after {
-      content: "";
-      position: absolute;
-      bottom: 0;
-      right: 0;
-      transform: translate(25%, 0%);
-      width: rem(420);
-      height: rem(420);
-      background: url("/assets/img/form-img.png") center/contain no-repeat;
-      pointer-events: none;
-
-      @include media("lg") {
-        transform: translate(10%, -7%);
-        width: rem(380);
-        height: rem(380);
-      }
-      @include media("md") {
-        transform: translate(10%, -20%);
-        width: rem(320);
-        height: rem(320);
-      }
-      @include media("sm") {
-        display: none;
-      }
+      min-width: calc(100vw - rem(25));
+      max-width: calc(100vw - rem(25));
     }
 
     .btn-close {
       position: absolute;
-      top: rem(25);
-      right: rem(25);
+      top: rem(-30);
+      right: rem(-30);
       z-index: 2;
-      width: rem(24);
-      height: rem(24);
+      width: rem(25);
+      height: rem(25);
       background: url('data:image/svg+xml,<svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1L16.5 16.5" stroke="%23ffffff" /><path d="M16.5 1L1 16.5" stroke="%23ffffff" /></svg>')
         center/contain no-repeat;
       cursor: pointer;
@@ -130,41 +291,6 @@ import TheForm from "../../TheForm.astro";
       @include media("sm") {
         top: -35px;
         right: 10px;
-      }
-    }
-
-    .text-h2 {
-      color: inherit;
-      font-size: rem(28);
-
-      @include media("sm") {
-        font-size: rem(24);
-      }
-    }
-
-    .form {
-      position: relative;
-      z-index: 2;
-    }
-
-    form {
-      margin-top: 0;
-      max-width: rem(340);
-
-      @include media("sm") {
-        max-width: 100%;
-      }
-
-      button {
-        color: var(--primary);
-        background: #fff;
-
-        &:hover {
-          opacity: 1;
-          color: #fff;
-          background: var(--secondary);
-          border-color: var(--secondary);
-        }
       }
     }
   }

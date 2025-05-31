@@ -15,6 +15,7 @@ const {
   title,
   desc,
   category,
+  slides,
   img = "hero/1.png",
   imgClass,
   isMain = false,
@@ -50,7 +51,7 @@ const {
             </div>
           )}
 
-          <Button variant="primary" data-form="callback">
+          <Button variant="primary" data-modal="callback">
             Оставить заявку
           </Button>
         </>
@@ -75,28 +76,30 @@ const {
             </div>
           )}
 
-          <div class="hero__swiper">
-            <div class="swiper">
-              <div class="swiper-wrapper">
-                {Array.from({ length: 5 }).map((_, index) => (
-                  <div class="swiper-slide group">
-                    <div class="group-title">Стационар на дому {index}</div>
-                    <div class="group-row">
-                      <div class="group-price">13 000 Р</div>
-                      <div class="group-realprice">30 000 Р</div>
+          {slides && (
+            <div class="hero__swiper">
+              <div class="swiper">
+                <div class="swiper-wrapper">
+                  {Array.from({ length: 5 }).map((_, index) => (
+                    <div class="swiper-slide group">
+                      <div class="group-title">Стационар на дому {index}</div>
+                      <div class="group-row">
+                        <div class="group-price">13 000 Р</div>
+                        <div class="group-realprice">30 000 Р</div>
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
+
+              <div class="swiper-button-prev" />
+              <div class="swiper-button-next" />
+
+              <div class="swiper-pagination" />
             </div>
+          )}
 
-            <div class="swiper-button-prev" />
-            <div class="swiper-button-next" />
-
-            <div class="swiper-pagination" />
-          </div>
-
-          <Button variant="primary" data-form="callback">
+          <Button variant="primary" data-modal="callback">
             Оставить заявку
           </Button>
         </>
